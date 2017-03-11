@@ -13,13 +13,24 @@ public class Plan {
     private int price;
     private int people;
 
-    public Plan(int plan_id, Date from, Date to, String room, int price, int people) {
+    private int room_num;
+
+    public Plan(int plan_id, Date from, Date to, String room, int price, int people,int room_num) {
         this.plan_id = plan_id;
         this.from = from;
         this.to = to;
         this.room = room;
         this.price = price;
         this.people = people;
+        this.room_num=room_num;
+    }
+
+    public int getRoom_num() {
+        return room_num;
+    }
+
+    public void setRoom_num(int room_num) {
+        this.room_num = room_num;
     }
 
     public int getPlan_id() {
