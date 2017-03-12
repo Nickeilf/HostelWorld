@@ -12,25 +12,34 @@ public class Plan {
     private String room;
     private int price;
     private int people;
+    private int bed_num;
+    private String state;
 
-    private int room_num;
-
-    public Plan(int plan_id, Date from, Date to, String room, int price, int people,int room_num) {
+    public Plan(int plan_id, Date from, Date to, String room, int price, int people,int bed_num,String state) {
         this.plan_id = plan_id;
         this.from = from;
         this.to = to;
         this.room = room;
         this.price = price;
         this.people = people;
-        this.room_num=room_num;
+        this.bed_num=bed_num;
+        this.state=state;
     }
 
-    public int getRoom_num() {
-        return room_num;
+    public String getState() {
+        return state;
     }
 
-    public void setRoom_num(int room_num) {
-        this.room_num = room_num;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public int getBed_num() {
+        return bed_num;
+    }
+
+    public void setBed_num(int bed_num) {
+        this.bed_num = bed_num;
     }
 
     public int getPlan_id() {

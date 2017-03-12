@@ -20,4 +20,13 @@ public class HostelController {
         mv.setViewName("hostel");
         return mv;
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView test() {
+        ModelAndView mv= new ModelAndView();
+        mv.setViewName("singlehostel");
+        return mv;
+    }
 }

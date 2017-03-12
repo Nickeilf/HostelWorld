@@ -75,9 +75,9 @@
                     <%--地点--%>
                     <input type="text" name="location" data-behavior="autocompletes-addresses" class="location-input input-contrast input-large pull-left input-search" value="" placeholder="输入地点" autocomplete="off" style="width:300px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
                     <%--入住日期--%>
-                    <input type="text" name="checkin" class="date-input checkin input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="入住日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
+                    <input type="text" name="checkin" class=" datepicker date-input checkin input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="入住日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
                     <%--退房日期--%>
-                    <input type="text" name="checkout" class="date-input checkout input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="退房日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
+                    <input type="text" name="checkout" class="datepicker date-input checkout input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="退房日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
                     <button type="submit" class="btn btn-large btn-primary pull-left"style="height: 42px">
                         搜索
                     </button>
@@ -189,12 +189,13 @@
         </div>
     </div>
 </footer>
-
-
-
-
-
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 17 // Creates a dropdown of 15 years to control year
+    });
+</script>
 </body>
 </html>

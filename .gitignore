@@ -38,3 +38,5 @@ fabric.properties
 *.class
 
 target/HostelWorld/WEB-INF/jsp/apply.jsp
+
+*.class
