@@ -1,0 +1,10 @@
+.search-border{
+    border:1px solid #dce0e0;
+    border-radius: 4px;
+}
+
+.inside-search-border{
+    /*border: 1px solid #dce0e0;*/
+    border-left: 1px solid #dce0e0;
+    border-right: 1px solid #dce0e0;
+}

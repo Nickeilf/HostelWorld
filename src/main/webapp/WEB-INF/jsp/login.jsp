@@ -42,8 +42,8 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="sass.html" class="grey-text">客栈</a></li>
-                    <li><a href="sass.html" class="grey-text">成为店家</a></li>
+                    <li><a href="hostel" class="grey-text">客栈</a></li>
+                    <li><a href="apply" class="grey-text">成为店家</a></li>
                     <li><a href="register"class="grey-text">注册</a></li>
                     <li><a href="login"class="grey-text">登录</a></li>
                 </ul>
@@ -63,6 +63,7 @@
 
     <div class="row">
     <div class="col l4 offset-l4">
+
     <form class="form-signin">
         <h3 class="form-signin-heading">登录</h3>
         <%--<label for="inputEmail" class="sr-only">User name</label>--%>
@@ -72,13 +73,13 @@
         <div class="row">
             <div class="input-field col s12">
                 <input id="login" type="text" class="validate">
-                <label for="login">User name</label>
+                <label for="login">用户名</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
+                <label for="password">密码</label>
             </div>
         </div>
 

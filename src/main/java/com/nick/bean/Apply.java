@@ -12,12 +12,23 @@ public class Apply {
     private String hostel_name;
     private String address;
 
-    public Apply(int apply_id, Timestamp apply_time, String state, String hostel_name, String address) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
+    public Apply(int apply_id, Timestamp apply_time, String state, String hostel_name, String address,String description) {
         this.apply_id = apply_id;
         this.apply_time = apply_time;
         this.state = state;
         this.hostel_name = hostel_name;
         this.address = address;
+        this.description=description;
     }
 
     public int getApply_id() {

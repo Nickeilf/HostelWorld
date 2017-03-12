@@ -7,17 +7,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by nick on 2017/3/7.
+ * Created by nick on 2017/3/12.
  */
-
 @Controller
-public class MainController {
-
+public class ApplyController {
     @ResponseBody
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView index() {
+    @RequestMapping(value = "/apply", method = RequestMethod.GET)
+    public ModelAndView register() {
         ModelAndView mv= new ModelAndView();
-        mv.setViewName("index");
+        mv.setViewName("apply");
         return mv;
     }
 }

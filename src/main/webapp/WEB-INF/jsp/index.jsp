@@ -42,8 +42,8 @@
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="sass.html" class="grey-text">客栈</a></li>
-                    <li><a href="sass.html" class="grey-text">成为店家</a></li>
+                    <li><a href="hostel" class="grey-text">客栈</a></li>
+                    <li><a href="apply" class="grey-text">成为店家</a></li>
                     <li><a href="register"class="grey-text">注册</a></li>
                     <li><a href="login"class="grey-text">登录</a></li>
                 </ul>
@@ -96,7 +96,7 @@
         </span>
             </div>
             <div class="col-4 col-bottom">
-                <a href="/s" class="pull-right">
+                <a href="hostel" class="pull-right">
                     更多
                 </a>
             </div>

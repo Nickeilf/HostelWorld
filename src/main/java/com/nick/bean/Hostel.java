@@ -8,12 +8,22 @@ public class Hostel {
     private String hostel_id;
     private String hostel_name;
     private String address;
+    private String description;
 
-    public Hostel(int balance, String hostel_id, String hostel_name, String address) {
+    public Hostel(int balance, String hostel_id, String hostel_name, String address,String description) {
         this.balance = balance;
         this.hostel_id = hostel_id;
         this.hostel_name = hostel_name;
         this.address = address;
+        this.description=description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getBalance() {

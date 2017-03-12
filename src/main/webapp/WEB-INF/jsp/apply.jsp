@@ -1,22 +1,26 @@
 <%--
   Created by IntelliJ IDEA.
   User: nick
-  Date: 2017/3/11
-  Time: 下午8:05
+  Date: 2017/3/12
+  Time: 下午6:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>注册账号</title>
+    <title>申请成为店家</title>
+    <link href="css/costume/hostel.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link href="css/costume/register.css" rel="stylesheet"/>
+
+    <%--<link href="css/airbnb/common-a7a76140779c5ed54899279593238a95.css" rel="stylesheet"/>--%>
     <link href="css/airbnb/common_o2.1-7a9ba7f9634ca8f5f400a2d90082c402.css" rel="stylesheet"/>
+    <%--<link href="css/airbnb/landing_pages-487744574aa7b0a331ab1ec9aa593550.css" rel="stylesheet"/>--%>
+    <%--<link href="css/airbnb/main-3da15b9c7afa29f4f14ae793f310cafb.css" rel="stylesheet"/>--%>
+
 </head>
 <body>
 
-<%--顶部导航栏--%>
 <div class="navbar-fixed">
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
@@ -24,7 +28,6 @@
                 <embed src="/HostelWorld/pic/hotel.svg" width="64" height="64"
                        type="image/svg+xml"
                        pluginspage="http://www.adobe.com/svg/viewer/install/"></embed>
-
                 <%--<object id="front-page-logo" type="image/svg+xml" data="/HostelWorld/pic/hotel.svg">Your browser does not support SVG</object>--%>
             </a>
             <div class="row">
@@ -35,6 +38,7 @@
                         </li>
                     </ul>
                 </div>
+
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index" class="grey-text">首页</a></li>
@@ -48,41 +52,61 @@
     </nav>
 </div>
 
-<br>
-
 <div class="container">
+    <br>
     <div class="row">
-        <div class="col l4 offset-l4">
-            <form class="form-signin">
-                <h3 class="form-signin-heading">注册</h3>
+        <div class="col m6 offset-m3">
+        <form class="col s12">
+            <h3 class="form-signin-heading">店家申请</h3>
+            <%--<label for="inputEmail" class="sr-only">User name</label>--%>
+            <%--<input type="text" id="inputEmail" class="form-control" placeholder="User name" required="" autofocus="">--%>
+            <%--<label for="inputPassword" class="sr-only">Password</label>--%>
+            <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="login" type="text" class="validate">
-                        <label for="login">用户名</label>
-                    </div>
+            <div class="row">
+                <div class="input-field col s5">
+                    <input id="hostel" type="text" data-length="10">
+                    <label for="hostel">客栈名</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
-                        <label for="password">密码</label>
-                    </div>
+
+                <div class="input-field col s7">
+                    <input id="address" type="text" class="validate">
+                    <label for="address">客栈地址</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="repassword" type="password" class="validate">
-                        <label for="repassword">再次输入密码</label>
-                    </div>
+
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" data-length="120"></textarea>
+                    <label for="description">请描述你的客栈</label>
+                    <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 20px">注册</button>
-            </form>
+            </div>
+
+            <h4 class="form-signin-heading" style="color: #ee6e73;">在申请之前，你需要缴纳1000元的保证金</h4>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="account" type="text" class="validate">
+                    <label for="account">银行账户</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">密码</label>
+                </div>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 20px">申请</button>
+        </form>
         </div>
+
+
     </div>
 </div>
 
 
 
-<%--底部footer--%>
+
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -116,5 +140,11 @@
 </footer>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('input#hostel,textarea#description').characterCounter();
+    });
+</script>
+
 </body>
 </html>
