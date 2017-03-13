@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>申请成为店家</title>
+    <title>支付</title>
     <link href="css/costume/hostel.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -56,48 +56,34 @@
     <br>
     <div class="row">
         <div class="col m6 offset-m3">
-        <form class="col s12">
-            <h3 class="form-signin-heading">店家申请</h3>
-            <%--<label for="inputEmail" class="sr-only">User name</label>--%>
-            <%--<input type="text" id="inputEmail" class="form-control" placeholder="User name" required="" autofocus="">--%>
-            <%--<label for="inputPassword" class="sr-only">Password</label>--%>
-            <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
-
-            <div class="row">
-                <div class="input-field col s5">
-                    <input id="hostel" type="text" data-length="10">
-                    <label for="hostel">客栈名</label>
+            <form class="col s12">
+                <h3 class="form-signin-heading">在线充值</h3>
+                <%--<label for="inputEmail" class="sr-only">User name</label>--%>
+                <%--<input type="text" id="inputEmail" class="form-control" placeholder="User name" required="" autofocus="">--%>
+                <%--<label for="inputPassword" class="sr-only">Password</label>--%>
+                <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="amount" type="number">
+                        <label for="amount">充值金额</label>
+                    </div>
                 </div>
 
-                <div class="input-field col s7">
-                    <input id="address" type="text">
-                    <label for="address">客栈地址</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="account" type="text">
+                        <label for="account">银行账户</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password">
+                        <label for="password">密码</label>
+                    </div>
                 </div>
 
-                <div class="input-field col s12">
-                    <textarea id="description" class="materialize-textarea" data-length="120"></textarea>
-                    <label for="description">请描述你的客栈</label>
-                    <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-                </div>
-            </div>
-
-            <h4 class="form-signin-heading" style="color: #ee6e73;">在申请之前，你需要缴纳1000元的保证金</h4>
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="account" type="text">
-                    <label for="account">银行账户</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password">
-                    <label for="password">密码</label>
-                </div>
-            </div>
-
-            <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 20px">申请</button>
-        </form>
+                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 20px">确定</button>
+            </form>
         </div>
 
 

@@ -9,13 +9,23 @@ public class Hostel {
     private String hostel_name;
     private String address;
     private String description;
+    private String member_id;
 
-    public Hostel(int balance, String hostel_id, String hostel_name, String address,String description) {
+    public Hostel(int balance, String hostel_id, String hostel_name, String address,String description,String member_id) {
         this.balance = balance;
         this.hostel_id = hostel_id;
         this.hostel_name = hostel_name;
         this.address = address;
         this.description=description;
+        this.member_id=member_id;
+    }
+
+    public String getMember_id() {
+        return member_id;
+    }
+
+    public void setMember_id(String member_id) {
+        this.member_id = member_id;
     }
 
     public String getDescription() {

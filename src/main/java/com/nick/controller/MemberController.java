@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nick.service.MemberService;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -17,7 +18,6 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/member")
 public class MemberController {
 
     @Autowired
@@ -35,6 +35,14 @@ public class MemberController {
     public String getAllMembers(){
 
         return memberService.getAllMembers().toString();
+    }
+
+    @ResponseBody
+    @RequestMapping("/personal")
+    public ModelAndView personal(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("personal");
+        return mv;
     }
 
 

@@ -13,7 +13,7 @@ public class Plan {
     private int price;
     private int people;
     private int bed_num;
-    private String state;
+    private String state;//是否正在居住
 
     public Plan(int plan_id, Date from, Date to, String room, int price, int people,int bed_num,String state) {
         this.plan_id = plan_id;

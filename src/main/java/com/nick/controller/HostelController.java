@@ -21,6 +21,38 @@ public class HostelController {
         return mv;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/hostel/modify", method = RequestMethod.GET)
+    public ModelAndView modify() {
+        ModelAndView mv= new ModelAndView();
+        mv.setViewName("hostel-modify");
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/hostel/plan", method = RequestMethod.GET)
+    public ModelAndView plan() {
+        ModelAndView mv= new ModelAndView();
+        mv.setViewName("hostel-plan");
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/hostel/register", method = RequestMethod.GET)
+    public ModelAndView register_man() {
+        ModelAndView mv= new ModelAndView();
+        mv.setViewName("hostel-register");
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/hostel/info", method = RequestMethod.GET)
+    public ModelAndView info() {
+        ModelAndView mv= new ModelAndView();
+        mv.setViewName("hostel-info");
+        return mv;
+    }
+
 
     @ResponseBody
     @RequestMapping(value = "/test", method = RequestMethod.GET)

@@ -10,7 +10,7 @@ public class Order {
     private int order_id;
     private Timestamp order_time;
     private String state;
-    private int amount;
+    private int amount;//总价
     private String hostel_id;
     private Date from;
     private Date to;

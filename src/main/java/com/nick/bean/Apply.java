@@ -11,6 +11,22 @@ public class Apply {
     private String state;
     private String hostel_name;
     private String address;
+    private String description;
+    private String member_id;
+    private String type;//是申请还是修改信息
+
+
+
+    public Apply(int apply_id, Timestamp apply_time, String state, String hostel_name, String address, String description, String member_id, String type) {
+        this.apply_id = apply_id;
+        this.apply_time = apply_time;
+        this.state = state;
+        this.hostel_name = hostel_name;
+        this.address = address;
+        this.description = description;
+        this.member_id = member_id;
+        this.type = type;
+    }
 
     public String getDescription() {
         return description;
@@ -20,15 +36,21 @@ public class Apply {
         this.description = description;
     }
 
-    private String description;
 
-    public Apply(int apply_id, Timestamp apply_time, String state, String hostel_name, String address,String description) {
-        this.apply_id = apply_id;
-        this.apply_time = apply_time;
-        this.state = state;
-        this.hostel_name = hostel_name;
-        this.address = address;
-        this.description=description;
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getMember_id() {
+        return member_id;
+    }
+
+    public void setMember_id(String member_id) {
+        this.member_id = member_id;
     }
 
     public int getApply_id() {
