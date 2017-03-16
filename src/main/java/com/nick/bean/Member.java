@@ -24,6 +24,15 @@ public class Member implements Serializable{
     private String login;
     private String name;
     private String phone;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getMember_id() {
         return member_id;

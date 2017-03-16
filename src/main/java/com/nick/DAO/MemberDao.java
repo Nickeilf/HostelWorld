@@ -12,4 +12,6 @@ import java.util.List;
 public interface MemberDao {
     public List<Member> getAllMembers();
 
+    public Member getMember(String id);
+
 }

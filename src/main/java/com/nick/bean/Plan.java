@@ -1,30 +1,59 @@
 package com.nick.bean;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.sql.Date;
 
 /**
  * Created by nick on 2017/3/10.
  */
+@Entity
+@Table(name = "plan")
 public class Plan {
+    @Id
     private int plan_id;
-    private Date from;
-    private Date to;
+    private Date fromdate;
+    private Date todate;
     private String room;
     private int price;
     private int people;
     private int bed_num;
     private String state;//是否正在居住
+    private String hostel_id;
+    private String plan_description;
 
-    public Plan(int plan_id, Date from, Date to, String room, int price, int people,int bed_num,String state) {
+
+    public Plan(int plan_id, Date fromdate, Date to, String room, int price, int people, int bed_num, String state) {
         this.plan_id = plan_id;
-        this.from = from;
-        this.to = to;
+        this.fromdate = fromdate;
+        this.todate = to;
         this.room = room;
         this.price = price;
         this.people = people;
         this.bed_num=bed_num;
         this.state=state;
     }
+
+    public Plan() {
+    }
+
+    public String getPlan_description() {
+        return plan_description;
+    }
+
+    public void setPlan_description(String plan_description) {
+        this.plan_description = plan_description;
+    }
+
+    public String getHostel_id() {
+        return hostel_id;
+    }
+
+    public void setHostel_id(String hostel_id) {
+        this.hostel_id = hostel_id;
+    }
+
 
     public String getState() {
         return state;
@@ -50,20 +79,20 @@ public class Plan {
         this.plan_id = plan_id;
     }
 
-    public Date getFrom() {
-        return from;
+    public Date getFromdate() {
+        return fromdate;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
+    public void setFromdate(Date from) {
+        this.fromdate = from;
     }
 
-    public Date getTo() {
-        return to;
+    public Date getTodate() {
+        return todate;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public void setTodate(Date to) {
+        this.todate = to;
     }
 
     public String getRoom() {

@@ -32,4 +32,9 @@ public class MemberServiceImpl implements MemberService {
         return memberDao.getAllMembers();
     }
 
+    @Override
+    public Member getMember(String id) {
+        return memberDao.getMember(id);
+    }
+
 }

@@ -1,10 +1,18 @@
 package com.nick.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
 /**
  * Created by nick on 2017/3/9.
  */
-public class Hostel {
+@Entity
+@Table(name="hostel")
+public class Hostel implements Serializable{
     private int balance;
+    @Id
     private String hostel_id;
     private String hostel_name;
     private String address;
@@ -19,6 +27,10 @@ public class Hostel {
         this.description=description;
         this.member_id=member_id;
     }
+
+    public Hostel() {
+    }
+
 
     public String getMember_id() {
         return member_id;

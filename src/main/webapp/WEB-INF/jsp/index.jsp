@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -5,7 +6,7 @@
   Time: 下午11:14
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>欢迎来到Hostel World</title>
@@ -69,15 +70,14 @@
                 <p class="h3">
                     北京 南京 东京 天津
                 </p>
-                <form accept-charset="UTF-8" action="/s" class="emphasized-search-form" data-behavior="validates-booking-dates" method="get">
+                <form accept-charset="UTF-8" onsubmit="return check()" action="hostel" name="search-from" class="emphasized-search-form" data-behavior="validates-booking-dates" method="post">
                     <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-
                     <%--地点--%>
-                    <input type="text" name="location" data-behavior="autocompletes-addresses" class="location-input input-contrast input-large pull-left input-search" value="" placeholder="输入地点" autocomplete="off" style="width:300px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
+                    <input type="text" name="location" id="location" data-behavior="autocompletes-addresses" class="location-input input-contrast input-large pull-left input-search" value="" placeholder="输入地点" autocomplete="off" style="width:300px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
                     <%--入住日期--%>
-                    <input type="text" name="checkin" class=" datepicker date-input checkin input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="入住日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
+                    <input type="date" name="checkin" id="checkin" class="datepicker date-input checkin input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="入住日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
                     <%--退房日期--%>
-                    <input type="text" name="checkout" class="datepicker date-input checkout input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="退房日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
+                    <input type="date" name="checkout" id="checkout" class="datepicker date-input checkout input-contrast input-large pull-left ui-datepicker-target input-search" placeholder="退房日期" style="width:120px;border:1px solid #aaa;outline:inherit;background: #fff;height:22px;border-radius: 2px;padding: 10px 10px 10px 10px">
                     <button type="submit" class="btn btn-large btn-primary pull-left"style="height: 42px">
                         搜索
                     </button>
@@ -103,49 +103,25 @@
         </div>
     </div>
 
+<%--下方的3个示例--%>
     <div class="row">
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <a href="#">
-                <div class="card-image">
-                    <img src="pic/house1.jpg">
-                </div>
-                </a>
-                <div class="card-content">
-                    <h5>￥998&nbsp;&nbsp;&nbsp;独立房间&nbsp;·&nbsp;1张床</h5>
-                    <p>Aroma(n)tica TreehouseinMonferrato</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <a href="#">
-                    <div class="card-image">
-                        <img src="pic/house2.jpg">
+        <c:forEach var="plan" items="${result.top}" varStatus="status">
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <a href="/HostelWorld/singleHostel?id=${plan.plan_id}">
+                        <div class="card-image">
+                            <img src="pic/house${status.count%3}.jpg">
+                        </div>
+                    </a>
+                    <div class="card-content">
+                        <h5>
+                            ¥<c:out value="${plan.price}"/>&nbsp;&nbsp;&nbsp;可供<c:out value="${plan.people}"/>个人居住&nbsp;·&nbsp;<c:out value="${plan.bed_num}"/>张床
+                        </h5>
+                        <p><c:out value="${plan.room}"/></p>
                     </div>
-                </a>
-                <div class="card-content">
-                    <h5>￥998&nbsp;&nbsp;&nbsp;整套公寓 · 2张床</h5>
-                    <p>Waterfront with extraordinary view</p>
                 </div>
             </div>
-        </div>
-
-
-        <div class="col s12 m6 l4">
-            <div class="card">
-                <a href="#">
-                    <div class="card-image">
-                        <img src="pic/house3.jpg">
-                    </div>
-                </a>
-                <div class="card-content">
-                    <h5>￥847&nbsp;&nbsp;&nbsp;独栋城堡 · 6张床</h5>
-                    <p>The Gatehouse to Ayton Castle</p>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
     </div>
 
 
@@ -192,9 +168,32 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
+    function check(){
+        var location=document.getElementById("location").value;
+        var checkin =document.getElementById("checkin").value;
+        var checkout=document.getElementById("checkout").value;
+
+        var success=true;
+        if(location==null||location=='') {
+            Materialize.toast("地点不能为空", 2000);
+            success=false;
+        }
+        if(checkin==null||checkin==''){
+            Materialize.toast("入住日期不能为空", 2000);
+            success=false;
+        }
+        if(checkout==null||checkout==''){
+            Materialize.toast("退房日期不能为空", 2000);
+            success=false;
+        }
+
+        return success;
+    }
+
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 17 // Creates a dropdown of 15 years to control year
+        selectYears: 17 ,// Creates a dropdown of 15 years to control year
+        format:'yyyy-mm-dd'
     });
 </script>
 </body>
