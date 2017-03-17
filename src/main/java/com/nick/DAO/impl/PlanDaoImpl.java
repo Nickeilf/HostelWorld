@@ -60,4 +60,12 @@ public class PlanDaoImpl extends BaseDaoImpl implements PlanDao {
         return query.list();
     }
 
+    @Override
+    public List<Plan> getRelatedPlans(String hostelid) {
+        String hql="from Plan p where hostel_id=?";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,hostelid);
+        return query.list();
+    }
+
 }

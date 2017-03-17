@@ -27,19 +27,19 @@ public class PlanServiceImpl implements PlanService{
     public List<Plan> getCurrentPlans(String page1,String location1,Date checkin,Date checkout,String human1) {
         //page
         int page=1;
-        if(page1!=null){
+        if(page1!=null&&page1.equals("")){
             page=Integer.parseInt(page1);
         }
         //human默认为1
         int human=1;
-        if(human1!=null){
+        if(human1!=null&&human1.equals("")){
             human=Integer.parseInt(human1);
         }
         //checkin默认今天
         //checkout默认明天
         //location没有调用另一个方法
 
-        if(location1!=null){
+        if(location1!=null&&location1!=""){
             return planDao.getCurrentPlans(page,location1,checkin,checkout,human);
         }else{
             return planDao.getCurrentPlans(page,checkin,checkout,human);
@@ -49,14 +49,19 @@ public class PlanServiceImpl implements PlanService{
     @Override
     public List<Plan> getCurrentPlans(String page1,String human1) {
         int page=1;
-        if(page1!=null){
+        if(page1!=null&&page1.equals("")){
             page=Integer.parseInt(page1);
         }
         //human默认为1
         int human=1;
-        if(human1!=null){
+        if(human1!=null&&human1.equals("")){
             human=Integer.parseInt(human1);
         }
         return planDao.getCurrentPlans(page,human);
+    }
+
+    @Override
+    public List<Plan> getRelatedPlan(String hostelid) {
+        return planDao.getRelatedPlans(hostelid);
     }
 }

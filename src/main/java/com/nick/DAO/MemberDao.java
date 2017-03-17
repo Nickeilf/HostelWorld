@@ -14,4 +14,6 @@ public interface MemberDao {
 
     public Member getMember(String id);
 
+    public Member getMemberByLogin(String login);
+
 }

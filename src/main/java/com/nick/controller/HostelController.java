@@ -42,29 +42,15 @@ public class HostelController {
 
         List<Plan> currentPlans = planService.getCurrentPlans(page,location,checkin,checkout,human);
 
-        List<Plan> planPage=new ArrayList<>();
-
-
-        int pageNum=1;
-        if(page!=null){
-            pageNum=Integer.parseInt(page);
-        }
-
-        for(int i=0;i<9;i++){
-            planPage.add(currentPlans.get(9*pageNum-9+i));
-        }
-
-        int pageCount = currentPlans.size()/9+1;
 
         //返回
         ModelAndView mv= new ModelAndView();
         mv.setViewName("hostel");
-        mv.addObject("pageCount",pageCount);
-        mv.addObject("plans",planPage);
-        mv.addObject("page",page);
+        mv.addObject("plans",currentPlans);
         mv.addObject("human",human);
         mv.addObject("checkin",checkin);
         mv.addObject("checkout",checkout);
+        mv.addObject("location",location);
         return mv;
     }
 
@@ -76,31 +62,21 @@ public class HostelController {
 
         List<Plan> currentPlans = planService.getCurrentPlans(page,human);
 
-        List<Plan> planPage=new ArrayList<>();
-
-
         int pageNum=1;
         if(page!=null){
             pageNum=Integer.parseInt(page);
         }
 
-        for(int i=0;i<9;i++){
-            planPage.add(currentPlans.get(9*pageNum-9+i));
-        }
-
-        int pageCount = currentPlans.size()/9+1;
-
         //返回
         ModelAndView mv= new ModelAndView();
         mv.setViewName("hostel");
-        mv.addObject("pageCount",pageCount);
-        mv.addObject("plans",planPage);
-        mv.addObject("page",page);
+        mv.addObject("plans",currentPlans);
+        mv.addObject("pageNum",pageNum);
         mv.addObject("human",human);
         return mv;
     }
 
-
+    //修改信息
     @ResponseBody
     @RequestMapping(value = "/hostel/modify", method = RequestMethod.GET)
     public ModelAndView modify() {
@@ -109,6 +85,7 @@ public class HostelController {
         return mv;
     }
 
+    //发布计划
     @ResponseBody
     @RequestMapping(value = "/hostel/plan", method = RequestMethod.GET)
     public ModelAndView plan() {
@@ -117,6 +94,7 @@ public class HostelController {
         return mv;
     }
 
+    //房客登记
     @ResponseBody
     @RequestMapping(value = "/hostel/register", method = RequestMethod.GET)
     public ModelAndView register_man() {
@@ -125,6 +103,7 @@ public class HostelController {
         return mv;
     }
 
+    //信息统计
     @ResponseBody
     @RequestMapping(value = "/hostel/info", method = RequestMethod.GET)
     public ModelAndView info() {
@@ -143,9 +122,13 @@ public class HostelController {
         Hostel hostel = hostelService.getHostel(plan.getHostel_id());
         Member member = memberService.getMember(hostel.getMember_id());
 
+        List<Plan> related = planService.getRelatedPlan(hostel.getHostel_id());
+
+
         ModelAndView mv= new ModelAndView();
         mv.setViewName("singlehostel");
         mv.addObject("plan",plan);
+        mv.addObject("related",related);
         mv.addObject("hostel",hostel);
         mv.addObject("member",member);
         return mv;

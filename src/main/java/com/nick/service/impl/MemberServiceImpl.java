@@ -37,4 +37,9 @@ public class MemberServiceImpl implements MemberService {
         return memberDao.getMember(id);
     }
 
+    @Override
+    public Member getMemberByLogin(String login) {
+        return memberDao.getMemberByLogin(login);
+    }
+
 }

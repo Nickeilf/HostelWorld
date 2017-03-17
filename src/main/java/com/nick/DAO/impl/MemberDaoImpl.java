@@ -31,5 +31,13 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
         return (Member)query.uniqueResult();
     }
 
+    @Override
+    public Member getMemberByLogin(String login) {
+        String hql = "from Member where login=?";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,login);
+        return (Member)query.uniqueResult();
+    }
+
 
 }

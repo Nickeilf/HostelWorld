@@ -14,4 +14,7 @@ public interface PlanService {
     public List<Plan> getCurrentPlans(String page1, String location1, Date checkin, Date checkout, String human1);
 
     public List<Plan> getCurrentPlans(String page1,String human1);
+
+
+    public List<Plan> getRelatedPlan(String hostelid);
 }

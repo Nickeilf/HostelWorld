@@ -85,7 +85,7 @@
     <!--</aop:config>-->
 
 
-    <!--<import resource="classpath:dao.xml"/>-->
+    <import resource="classpath:dao.xml"/>
     <!--<import resource="classpath:service.xml"/>-->
     <!--<import resource="classpath:controller.xml"/>-->
 

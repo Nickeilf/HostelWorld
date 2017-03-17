@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by nick on 2017/3/9.
@@ -26,8 +26,20 @@ public class Member implements Serializable{
     private String phone;
     private String email;
 
+    public Member() {
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public Member(String member_id,String login){
+        this.member_id = member_id;
+        balance=0;
+        state="invalid";
+        point =0;
+        level=1;
+        this.login=login;
     }
 
     public void setEmail(String email) {

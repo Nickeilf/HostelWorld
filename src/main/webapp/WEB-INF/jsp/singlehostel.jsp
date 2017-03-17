@@ -30,6 +30,7 @@
                 <embed src="/HostelWorld/pic/hotel.svg" width="64" height="64"
                        type="image/svg+xml"
                        pluginspage="http://www.adobe.com/svg/viewer/install/"></embed>
+
                 <%--<object id="front-page-logo" type="image/svg+xml" data="/HostelWorld/pic/hotel.svg">Your browser does not support SVG</object>--%>
             </a>
             <div class="row">
@@ -41,14 +42,29 @@
                     </ul>
                 </div>
 
-
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="hostel" class="grey-text">客栈</a></li>
-                    <li><a href="apply" class="grey-text">成为店家</a></li>
-                    <li><a href="register"class="grey-text">注册</a></li>
-                    <li><a href="login"class="grey-text">登录</a></li>
-                </ul>
+                <c:if test="${empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li><a href="register"class="grey-text">注册</a></li>
+                        <li><a href="login"class="grey-text">登录</a></li>
+                    </ul>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li>
+                            <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
+                            <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
+                                <li><a href="personal">个人主页</a></li>
+                                <li><a href="logout">登出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </c:if>
             </div>
         </div>
     </nav>
@@ -78,7 +94,7 @@
                     <h3>
                         <c:out value="${hostel.hostel_name}"></c:out>
                     </h3>
-                    <h5>
+                    <h5 style="color: #26a69a;">
                         <c:out value="${plan.room}"></c:out>
                     </h5>
                     <p><c:out value="${hostel.address}"></c:out></p>
@@ -151,31 +167,24 @@
 
             <div class="row">
                 <div class="col m12">
-                    <h5 class="promo-caption">更多照片</h5>
+                    <h5 class="promo-caption">该客栈的其他房源</h5>
                 </div>
 
                 <div class="col m12">
-                    <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="pic/house1.jpg">
+                    <c:forEach var="plan" items="${related}" varStatus="status">
+                        <div class="col s12 m6 l4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <a  href="/HostelWorld/singleHostel?id=${plan.plan_id}">
+                                        <img src="pic/house${status.count%3}.jpg">
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <p style="font-size: 2px"><c:out value="${plan.room}"/></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="pic/house1.jpg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="pic/house1.jpg">
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

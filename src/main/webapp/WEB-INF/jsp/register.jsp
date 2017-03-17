@@ -53,24 +53,24 @@
 <div class="container">
     <div class="row">
         <div class="col l4 offset-l4">
-            <form class="form-signin">
+            <form class="form-signin" id="register-form" method="post" action="checkRegister" onsubmit="return check()">
                 <h3 class="form-signin-heading">注册</h3>
-
+                <p style="color: #ff5a5f;">${message}</p>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="login" type="text" class="validate">
+                        <input id="login" name="login" type="text" class="validate">
                         <label for="login">用户名</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" class="validate">
                         <label for="password">密码</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="repassword" type="password" class="validate">
+                        <input id="repassword" name="repassword" type="password" class="validate">
                         <label for="repassword">再次输入密码</label>
                     </div>
                 </div>
@@ -114,6 +114,35 @@
         </div>
     </div>
 </footer>
+<script>
+    function check() {
+        var login=document.getElementById("login").value;
+        var password =document.getElementById("password").value;
+        var repassword =document.getElementById("repassword").value;
+
+        var success=true;
+        if(login==null||login==''){
+            Materialize.toast("用户名不能为空", 2000);
+            success=false;
+        }
+        if(password==null||password==''){
+            Materialize.toast("密码不能为空", 2000);
+            success=false;
+        }
+        if(repassword==null||repassword==''){
+            Materialize.toast("确认密码不能为空", 2000);
+            success=false;
+        }
+
+        if(password!=repassword){
+            Materialize.toast("密码和确认密码需一致",2000);
+            success=false;
+        }
+
+
+        return success;
+    }
+</script>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
