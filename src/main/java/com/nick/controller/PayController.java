@@ -39,6 +39,9 @@ public class PayController {
         String hostel_id = request.getParameter("hostel_id");
         String plan_id = request.getParameter("plan_id");
         String price = request.getParameter("price");
+        String hostel_name =request.getParameter("hostel_name");
+        String plan_name =request.getParameter("plan_name");
+
         int minus = getMinus(fromdate,todate);
 
 
@@ -49,7 +52,7 @@ public class PayController {
 
         }else if(user.getType().equals("member")){
             //下单
-            payService.createOrder(human,price,minus,fromdate,todate,hostel_id,plan_id,iscard,user.getLogin());
+            payService.createOrder(human,price,minus,fromdate,todate,hostel_id,plan_id,iscard,user.getLogin(),hostel_name,plan_name);
         }
 
         return new ModelAndView("redirect:/personal");

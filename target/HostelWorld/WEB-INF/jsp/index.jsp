@@ -44,7 +44,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="apply" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li><a href="register"class="grey-text">注册</a></li>
                         <li><a href="login"class="grey-text">登录</a></li>
                     </ul>
@@ -53,7 +58,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="hostel/modify" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li>
                             <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
                             <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
@@ -199,7 +209,20 @@
             success=false;
         }
 
+        if(checkin!=null&&checkin!=''&&checkin!=null&&checkin!=''){
+            var d1=toDate(checkin);
+            var d2=toDate(checkout);
+            if(d1>=d2){
+                Materialize.toast("入住日期不能晚于退房日期", 2000);
+                success=false;
+            }
+        }
+
         return success;
+    }
+    function toDate(str){
+        var sd=str.split("-");
+        return new Date(sd[0],sd[1],sd[2]);
     }
 
     $('.datepicker').pickadate({

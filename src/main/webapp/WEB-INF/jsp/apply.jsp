@@ -45,7 +45,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="apply" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li><a href="register"class="grey-text">注册</a></li>
                         <li><a href="login"class="grey-text">登录</a></li>
                     </ul>
@@ -54,7 +59,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="hostel/modify" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li>
                             <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
                             <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
@@ -73,26 +83,28 @@
     <br>
     <div class="row">
         <div class="col m6 offset-m3">
-        <form class="col s12">
+        <form class="col s12" action="applyhostel" method="post" name="apply-form" onsubmit="return check()">
             <h3 class="form-signin-heading">店家申请</h3>
+            <p style="color: #ee6e73;">${message}</p>
             <%--<label for="inputEmail" class="sr-only">User name</label>--%>
             <%--<input type="text" id="inputEmail" class="form-control" placeholder="User name" required="" autofocus="">--%>
             <%--<label for="inputPassword" class="sr-only">Password</label>--%>
             <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
 
+
             <div class="row">
                 <div class="input-field col s5">
-                    <input id="hostel" type="text" data-length="10">
+                    <input id="hostel" name="hostel" type="text" data-length="10">
                     <label for="hostel">客栈名</label>
                 </div>
 
                 <div class="input-field col s7">
-                    <input id="address" type="text">
+                    <input id="address" name="address" type="text">
                     <label for="address">客栈地址</label>
                 </div>
 
                 <div class="input-field col s12">
-                    <textarea id="description" class="materialize-textarea" data-length="120"></textarea>
+                    <textarea id="description" name="description" class="materialize-textarea" data-length="120"></textarea>
                     <label for="description">请描述你的客栈</label>
                     <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
                 </div>
@@ -102,13 +114,13 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="account" type="text">
+                    <input id="account" name="account" type="text">
                     <label for="account">银行账户</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password" type="password">
+                    <input id="password" name="password" type="password">
                     <label for="password">密码</label>
                 </div>
             </div>
@@ -158,6 +170,40 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
+
+    function check() {
+        var hostel = document.getElementById("hostel").value;
+        var address=document.getElementById("address").value;
+        var description=document.getElementById("description").value;
+        var account =document.getElementById("account").value;
+        var password=document.getElementById("password").value;
+
+        var success=true;
+
+        if(hostel==null||hostel==''){
+            Materialize.toast("客栈名不能为空", 2000);
+            success=false;
+        }
+        if(address==null||address==''){
+            Materialize.toast("地址不能为空", 2000);
+            success=false;
+        }
+        if(description==null||description==''){
+            Materialize.toast("客栈描述不能为空", 2000);
+            success=false;
+        }
+        if(account==null||account==''){
+            Materialize.toast("银行账户不能为空", 2000);
+            success=false;
+        }
+        if(password==null||password==''){
+            Materialize.toast("密码不能为空", 2000);
+            success=false;
+        }
+
+        return success;
+
+    }
     $(document).ready(function() {
         $('input#hostel,textarea#description').characterCounter();
     });

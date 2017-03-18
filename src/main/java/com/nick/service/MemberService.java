@@ -22,4 +22,6 @@ public interface MemberService {
     public void updateInfo(String name,String phone,String email,String login);
 
     public void transfer(int points,String login);
+
+    public void moneyBack(String login,String amount);
 }

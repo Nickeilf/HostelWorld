@@ -7,7 +7,7 @@ import java.sql.Date;
  */
 public interface PayService {
 
-    public void createOrder(String human, String price, int minus, Date fromdate, Date todate, String hostel_id, String plan_id, String cardOrCash, String userlogin);
+    public void createOrder(String human, String price, int minus, Date fromdate, Date todate, String hostel_id, String plan_id, String cardOrCash, String userlogin,String hostel_name,String plan_name);
 
     public boolean recharge(String account,String password,String amount,String login);
 }

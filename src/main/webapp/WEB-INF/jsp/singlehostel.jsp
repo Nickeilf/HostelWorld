@@ -46,7 +46,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="apply" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li><a href="register"class="grey-text">注册</a></li>
                         <li><a href="login"class="grey-text">登录</a></li>
                     </ul>
@@ -55,7 +60,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="hostel/modify" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li>
                             <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
                             <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
@@ -201,6 +211,8 @@
                     <input type="text" hidden name="hostel_id" id="hostel_id" value="${hostel.hostel_id}" style="display: none">
                     <input type="text" hidden name="plan_id" id="plan_id" value="${plan.plan_id}" style="display: none">
                     <input type="text" hidden name="price" id="price" value="${plan.price}" style="display: none">
+                    <input type="text" hidden name="hostel_name" id="hostel_name" value="${hostel.hostel_name}" style="display: none">
+                    <input type="text" hidden name="plan_name" id="plan_name" value="${plan.room}" style="display: none">
                     <div class="row">
                         <div class="col m6">
                             <label for="fromdate" class="SearchForm__label"><span>入住时间</span></label>
@@ -307,6 +319,7 @@
             success=false;
         }
         if(fromdate!=null&&fromdate!=''&&todate!=null&&todate!=''){
+
             var d1=toDate(fromdate);
             var d2=toDate(todate);
             if(d1>=d2){
@@ -317,6 +330,11 @@
         }
 
         return success;
+    }
+
+    function toDate(str){
+        var sd=str.split("-");
+        return new Date(sd[0],sd[1],sd[2]);
     }
     
     $('.carousel.carousel-slider').carousel({fullWidth: true});

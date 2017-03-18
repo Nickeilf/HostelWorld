@@ -16,4 +16,6 @@ public interface PlanDao {
     public List<Plan> getCurrentPlans(int page,int human);
 
     public List<Plan> getRelatedPlans(String hostelid);
+
+
 }

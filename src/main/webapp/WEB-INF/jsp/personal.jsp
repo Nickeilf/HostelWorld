@@ -40,7 +40,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="apply" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li><a href="register"class="grey-text">注册</a></li>
                         <li><a href="login"class="grey-text">登录</a></li>
                     </ul>
@@ -49,7 +54,12 @@
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index" class="grey-text">首页</a></li>
                         <li><a href="hostel" class="grey-text">客栈</a></li>
-                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <c:if test="${sessionScope.user.type=='hostel'}">
+                            <li><a href="hostel/modify" class="grey-text">客栈管理</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user.type!='hostel'}">
+                            <li><a href="apply" class="grey-text">成为店家</a></li>
+                        </c:if>
                         <li>
                             <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
                             <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
@@ -177,71 +187,105 @@
 
                 <div id="wait">
                     <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                        <li class="">
-                            <div class="collapsible-header">
-                                <i class="material-icons">store</i>
-                                客栈名称-房间名称
-                            </div>
-                            <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m9">
-                                    价格:226¥每晚&nbsp;&nbsp;时间:2017-3-5到2017-3-7(2天)<br>
-                                    总价:452&nbsp;&nbsp;支付方式:现金支付<br>
-                                    人数:3人<br>
-                                    订单时间:2017-3-4&nbsp;&nbsp;订单状态:未出行<br>
+                        <c:forEach var="order" items="${wait}" varStatus="status">
+                            <li class="">
+                                <div class="collapsible-header">
+                                    <i class="material-icons">store</i>
+                                    ${order.hostel_name}-${order.plan_name}
                                 </div>
-                                <div class="col m3">
-                                    <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">取消订单</button>
+                                <div class="collapsible-body" style="display: none;">
+                                    <span>
+                                        <div class="row">
+                                            <div class="col m9">
+                                                金额:${order.amount}<br>
+                                                时间:${order.fromdate}到${order.todate}<br>
+                                                <c:if test="${order.type=='card'}">
+                                                    支付方式:会员卡支付<br>
+                                                </c:if>
+                                                <c:if test="${order.type=='cash'}">
+                                                    支付方式:现金支付<br>
+                                                </c:if>
+                                                人数:${order.number}人<br>
+                                                订单时间:${order.order_time}&nbsp;&nbsp;订单状态:未出行<br>
+                                            </div>
+                                            <form action="cancelorder" method="post">
+                                                <input name="order_id" value="${order.order_id}"type="text" hidden style="display: none">
+                                                <input name="login" value="${order.user_login}"type="text" hidden style="display: none">
+                                                <input name="amount" value="${order.amount}"type="text" hidden style="display: none">
+                                                <input name="card" value="${order.type}"type="text" hidden style="display: none">
+
+                                                <div class="col m3">
+                                                    <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">取消订单</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </span>
                                 </div>
-                            </div>
-                        </span>
-                            </div>
-                        </li>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div id="finish">
                     <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                        <li class="">
-                            <div class="collapsible-header">
-                                <i class="material-icons">store</i>
-                                客栈名称-房间名称
-                            </div>
-                            <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m12">
-                                    价格:226¥每晚&nbsp;&nbsp;时间:2017-3-5到2017-3-7(2天)<br>
-                                    总价:452&nbsp;&nbsp;支付方式:现金支付<br>
-                                    人数:3人<br>
-                                    订单时间:2017-3-4&nbsp;&nbsp;订单状态:已完成<br>
+                        <c:forEach var="order" items="${finish}" varStatus="status">
+                            <li class="">
+                                <div class="collapsible-header">
+                                    <i class="material-icons">store</i>
+                                        ${order.hostel_name}-${order.plan_name}
                                 </div>
-                            </div>
-                        </span>
-                            </div>
-                        </li>
+                                <div class="collapsible-body" style="display: none;">
+                                    <span>
+                                        <div class="row">
+                                            <div class="col m9">
+                                                金额:${order.amount}<br>
+                                                时间:${order.fromdate}到${order.todate}<br>
+                                                <c:if test="${order.type=='card'}">
+                                                    支付方式:会员卡支付<br>
+                                                </c:if>
+                                                <c:if test="${order.type=='cash'}">
+                                                    支付方式:现金支付<br>
+                                                </c:if>
+                                                人数:${order.number}人<br>
+                                                订单时间:${order.order_time}&nbsp;&nbsp;订单状态:已完成<br>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div id="cancel">
                     <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                        <li class="">
-                            <div class="collapsible-header">
-                                <i class="material-icons">store</i>
-                                客栈名称-房间名称
-                            </div>
-                            <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m12">
-                                    价格:226¥每晚&nbsp;&nbsp;时间:2017-3-5到2017-3-7(2天)<br>
-                                    总价:452&nbsp;&nbsp;支付方式:现金支付<br>
-                                    人数:3人<br>
-                                    订单时间:2017-3-4&nbsp;&nbsp;订单状态:已取消<br>
+                        <c:forEach var="order" items="${cancel}" varStatus="status">
+                            <li class="">
+                                <div class="collapsible-header">
+                                    <i class="material-icons">store</i>
+                                        ${order.hostel_name}-${order.plan_name}
                                 </div>
-                            </div>
-                        </span>
-                            </div>
-                        </li>
+                                <div class="collapsible-body" style="display: none;">
+                                    <span>
+                                        <div class="row">
+                                            <div class="col m9">
+                                                金额:${order.amount}<br>
+                                                时间:${order.fromdate}到${order.todate}<br>
+                                                <c:if test="${order.type=='card'}">
+                                                    支付方式:会员卡支付<br>
+                                                </c:if>
+                                                <c:if test="${order.type=='cash'}">
+                                                    支付方式:现金支付<br>
+                                                </c:if>
+                                                人数:${order.number}人<br>
+                                                订单时间:${order.order_time}&nbsp;&nbsp;订单状态:已取消<br>
+                                                <c:if test="${order.type=='card'}">
+                                                    <p style="color: #ff5a5f;">退款金额已到账</p>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
 

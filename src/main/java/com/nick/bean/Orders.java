@@ -24,8 +24,11 @@ public class Orders {
     private String type;//支付方式
     private int number;//人数
     private String plan_id;
+    private String hostel_name;
+    private String plan_name;
+    private String check_state;
 
-    public Orders(int order_id, Timestamp order_time, String state, int amount, String hostel_id, Date fromdate, Date todate, String user_login, String type, int number, String plan_id) {
+    public Orders(int order_id, Timestamp order_time, String state, int amount, String hostel_id, Date fromdate, Date todate, String user_login, String type, int number, String plan_id, String hostel_name, String plan_name) {
         this.order_id = order_id;
         this.order_time = order_time;
         this.state = state;
@@ -37,9 +40,36 @@ public class Orders {
         this.type = type;
         this.number = number;
         this.plan_id = plan_id;
+        this.hostel_name = hostel_name;
+        this.plan_name = plan_name;
+        this.check_state = "uncheck";
     }
 
     public Orders() {
+    }
+
+    public String getCheck_state() {
+        return check_state;
+    }
+
+    public void setCheck_state(String check_state) {
+        this.check_state = check_state;
+    }
+
+    public String getHostel_name() {
+        return hostel_name;
+    }
+
+    public void setHostel_name(String hostel_name) {
+        this.hostel_name = hostel_name;
+    }
+
+    public String getPlan_name() {
+        return plan_name;
+    }
+
+    public void setPlan_name(String plan_name) {
+        this.plan_name = plan_name;
     }
 
     public String getPlan_id() {

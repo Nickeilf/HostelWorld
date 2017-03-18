@@ -68,4 +68,5 @@ public class PlanDaoImpl extends BaseDaoImpl implements PlanDao {
         return query.list();
     }
 
+
 }

@@ -24,4 +24,6 @@ public interface MemberDao {
 
     public void transfer(int num,String login);
 
+    public void moneyBack(String login, int amount);
+
 }

@@ -51,7 +51,7 @@ public class LoginController {
             session.setAttribute("user",user);
 
             if(user.getType().equals("manager")){
-                return new ModelAndView("redirect:/manage-approve");
+                return new ModelAndView("redirect:/manage/approve");
             }
             return new ModelAndView("redirect:/personal");
         }else{

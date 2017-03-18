@@ -101,5 +101,14 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
 
     }
 
+    @Override
+    public void moneyBack(String login, int amount) {
+        String hql="update Member m set m.balance=m.balance+? where login=?";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        query.setInteger(0,amount);
+        query.setString(1,login);
+        query.executeUpdate();
+    }
+
 
 }

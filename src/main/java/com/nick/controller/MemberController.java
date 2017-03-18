@@ -1,7 +1,10 @@
 package com.nick.controller;
 
 import com.nick.bean.Member;
+import com.nick.bean.Orders;
+import com.nick.bean.Plan;
 import com.nick.bean.User_dup;
+import com.nick.service.OrderService;
 import com.nick.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,6 +34,9 @@ public class MemberController {
     @Autowired
     private PlanService planService;
 
+    @Autowired
+    private OrderService orderService;
+
     public MemberService getMemberService() {
         return memberService;
     }
@@ -54,10 +60,17 @@ public class MemberController {
             if(user_dup.getType().equals("user")){
                 mv.addObject("message","请充值至1000元以上以激活成为会员");
             }else if(user_dup.getType().equals("hostel")||user_dup.getType().equals("member")){
-                //查数据库找信息
+                //查数据库找会员信息
+                List<Orders> wait = orderService.getWaitOrder(user_dup.getLogin());
+                List<Orders> finish = orderService.getFinishOrder(user_dup.getLogin());
+                List<Orders> cancel = orderService.getCancelOrder(user_dup.getLogin());
 
 
+                mv.addObject("wait",wait);
+                mv.addObject("finish",finish);
+                mv.addObject("cancel",cancel);
             }else{
+                //经理
                 mv.setViewName("manage-approve");
             }
         }
@@ -103,6 +116,25 @@ public class MemberController {
 
         return  new ModelAndView("redirect:personal");
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/cancelorder",method = RequestMethod.POST)
+    public ModelAndView cancel(HttpSession session, HttpServletRequest request){
+        String order_id=request.getParameter("order_id");
+        String login=request.getParameter("login");
+        String amount=request.getParameter("amount");
+        String type=request.getParameter("card");
+
+        orderService.cancelOrder(order_id);
+        if(type.equals("card")){
+            memberService.moneyBack(login,amount);
+        }
+
+
+        return  new ModelAndView("redirect:personal");
+    }
+
+
 
 
 }

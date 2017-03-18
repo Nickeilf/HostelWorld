@@ -64,4 +64,5 @@ public class PlanServiceImpl implements PlanService{
     public List<Plan> getRelatedPlan(String hostelid) {
         return planDao.getRelatedPlans(hostelid);
     }
+
 }
