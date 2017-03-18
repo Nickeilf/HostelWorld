@@ -117,22 +117,24 @@
                     会员信息
                 </h3>
                 <div class="row">
-                <div class="input-field col s6">
-                    <input value="${member.name}" id="nickname" type="text">
-                    <label for="nickname">昵称</label>
-                </div>
-                <div class="input-field col s6">
-                    <input value="${member.phone}" id="phone" type="number">
-                    <label for="phone">电话</label>
-                </div>
-                <div class="input-field col s6">
-                    <input value="${member.email}" id="email" type="email">
-                    <label for="email">邮箱</label>
-                </div>
+                    <form id="info-form" method="post" action="changeinfo">
+                        <div class="input-field col s6">
+                            <input value="${member.name}" name="nickname" id="nickname" type="text">
+                            <label for="nickname">昵称</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input value="${member.phone}" name="phone" id="phone" type="number">
+                            <label for="phone">电话</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input value="${member.email}" name="email" id="email" type="email">
+                            <label for="email">邮箱</label>
+                        </div>
 
-                <div class="col m6">
-                    <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">修改</button>
-                </div>
+                        <div class="col m6">
+                            <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">修改</button>
+                        </div>
+                    </form>
                 </div>
                 <br>
                 <div class="row">
@@ -144,15 +146,17 @@
                     卡余额:${member.balance}元
                 </div>
 
+                    <form name="trans-form" action="trans" method="post">
                     <div class="col m12">
                         <p class="range-field">
                             <label for="point2balance">积分转余额(20积分=1元)</label>
-                            <input type="range" id="point2balance" min="0" max="${member.point}" />
+                            <input type="range" name="point2balance" id="point2balance" min="0" max="${member.point}" />
                         </p>
                     </div>
                     <div class="col m6 offset-m6">
                         <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">确定</button>
                     </div>
+                    </form>
                 </div>
 
 
@@ -301,6 +305,12 @@
 </footer><script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
+    function check() {
+        var number = document.getElementById("point2balance").value;
+        alert(number);
+        return false;
+    }
+
     $(document).ready(function(){
         $('.scrollspy').scrollSpy();
     });

@@ -20,4 +20,8 @@ public interface MemberDao {
 
     public void cancel(String login);
 
+    public void updateInfo(String name,String phone,String email,String login);
+
+    public void transfer(int num,String login);
+
 }

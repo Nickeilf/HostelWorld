@@ -47,4 +47,14 @@ public class MemberServiceImpl implements MemberService {
         memberDao.cancel(login);
     }
 
+    @Override
+    public void updateInfo(String name, String phone, String email,String login) {
+        memberDao.updateInfo(name,phone,email,login);
+    }
+
+    @Override
+    public void transfer(int points, String login) {
+        memberDao.transfer(points,login);
+    }
+
 }

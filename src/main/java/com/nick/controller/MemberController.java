@@ -2,16 +2,19 @@ package com.nick.controller;
 
 import com.nick.bean.Member;
 import com.nick.bean.User_dup;
+import com.nick.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.nick.service.MemberService;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -24,6 +27,9 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private PlanService planService;
 
     public MemberService getMemberService() {
         return memberService;
@@ -66,6 +72,36 @@ public class MemberController {
         memberService.cancel(user_dup.getLogin());
 
         return new ModelAndView("redirect:/personal");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "changeinfo",method = RequestMethod.POST)
+    public ModelAndView changeInfo(HttpSession session, HttpServletRequest request){
+        String name = request.getParameter("nickname");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+
+        User_dup user_dup = (User_dup) session.getAttribute("user");
+
+        memberService.updateInfo(name,phone,email,user_dup.getLogin());
+
+
+        return  new ModelAndView("redirect:personal");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "trans",method = RequestMethod.POST)
+    public ModelAndView trans(HttpSession session, HttpServletRequest request){
+        String number = request.getParameter("point2balance");
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+
+        int tran = Integer.parseInt(number);
+
+        memberService.transfer(tran,user_dup.getLogin());
+
+
+        return  new ModelAndView("redirect:personal");
     }
 
 

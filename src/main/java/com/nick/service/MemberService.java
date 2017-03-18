@@ -18,4 +18,8 @@ public interface MemberService {
     public Member getMemberByLogin(String login);
 
     public void cancel(String login);
+
+    public void updateInfo(String name,String phone,String email,String login);
+
+    public void transfer(int points,String login);
 }

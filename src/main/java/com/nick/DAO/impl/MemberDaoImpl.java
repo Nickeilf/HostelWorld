@@ -77,5 +77,29 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
 
     }
 
+    @Override
+    public void updateInfo(String name, String phone, String email,String login) {
+        String hql ="update Member m set m.name=? ,m.phone=?,m.email=? where m.login=?";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,name);
+        query.setString(1,phone);
+        query.setString(2,email);
+        query.setString(3,login);
+        query.executeUpdate();
+    }
+
+    @Override
+    public void transfer(int num, String login) {
+        int balanceAdd=num/20;
+        String hql="update Member m set m.point=m.point-?,m.balance=m.balance+?where login=?";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+
+        query.setInteger(0,num);
+        query.setInteger(1,balanceAdd);
+        query.setString(2,login);
+        query.executeUpdate();
+
+    }
+
 
 }
