@@ -29,4 +29,9 @@ public class LoginServiceImpl implements LoginService {
             return null;
         }
     }
+
+    @Override
+    public User_dup getUser(String login) {
+        return loginDao.getUser(login);
+    }
 }

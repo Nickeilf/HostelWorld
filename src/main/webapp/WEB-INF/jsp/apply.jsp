@@ -83,7 +83,7 @@
     <br>
     <div class="row">
         <div class="col m6 offset-m3">
-        <form class="col s12" action="applyhostel" method="post" name="apply-form" onsubmit="return check()">
+        <form class="col s12" action="apply" method="post" name="apply-form" onsubmit="return check()">
             <h3 class="form-signin-heading">店家申请</h3>
             <p style="color: #ee6e73;">${message}</p>
             <%--<label for="inputEmail" class="sr-only">User name</label>--%>
@@ -91,7 +91,7 @@
             <%--<label for="inputPassword" class="sr-only">Password</label>--%>
             <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
 
-
+            <c:if test="${applying!='true'}">
             <div class="row">
                 <div class="input-field col s5">
                     <input id="hostel" name="hostel" type="text" data-length="10">
@@ -126,6 +126,7 @@
             </div>
 
             <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 20px">申请</button>
+            </c:if>
         </form>
         </div>
 

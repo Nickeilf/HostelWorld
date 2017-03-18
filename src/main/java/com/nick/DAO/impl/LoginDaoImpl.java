@@ -78,4 +78,12 @@ public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
         return newUserDump;
     }
 
+    @Override
+    public User_dup getUser(String login) {
+        String hql="from User_dup where login=?";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,login);
+        return (User_dup) query.uniqueResult();
+    }
+
 }

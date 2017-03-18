@@ -12,4 +12,6 @@ public interface LoginDao {
     public boolean haveUser(String login);
 
     public User_dup createUser(String login,String password);
+
+    public User_dup getUser(String login);
 }

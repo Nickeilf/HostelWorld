@@ -58,8 +58,10 @@ public class PayDaoImpl extends BaseDaoImpl implements PayDao {
         Member member = (Member) query.uniqueResult();
         member.setBalance(member.getBalance()+amount);
 
+        boolean updateUser=false;
         if(member.getBalance()>=1000&&member.getState().equals("invalid")){
             member.setState("use");
+            updateUser=true;
         }
 
         //账户--
@@ -76,5 +78,18 @@ public class PayDaoImpl extends BaseDaoImpl implements PayDao {
         query.setString(1,member.getState());
         query.setString(2,login);
         query.executeUpdate();
+
+        //user改
+        if(updateUser){
+            hql="update User u set u.type='member'where login=?";
+            query=sessionFactory.getCurrentSession().createQuery(hql);
+            query.setString(0,login);
+            query.executeUpdate();
+
+            hql="update User_dup u set u.type='member'where login=?";
+            query=sessionFactory.getCurrentSession().createQuery(hql);
+            query.setString(0,login);
+            query.executeUpdate();
+        }
     }
 }

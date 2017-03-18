@@ -1,11 +1,17 @@
 package com.nick.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 
 /**
  * Created by nick on 2017/3/9.
  */
+@Entity
+@Table(name = "apply")
 public class Apply {
+    @Id
     private int  apply_id;
     private Timestamp apply_time;
     private String state;
@@ -13,19 +19,31 @@ public class Apply {
     private String address;
     private String description;
     private String member_id;
+    private String user;
     private String type;//是申请还是修改信息
 
 
-
-    public Apply(int apply_id, Timestamp apply_time, String state, String hostel_name, String address, String description, String member_id, String type) {
+    public Apply(int apply_id, Timestamp apply_time, String hostel_name, String address, String description, String member_id, String user, String type) {
         this.apply_id = apply_id;
         this.apply_time = apply_time;
-        this.state = state;
+        this.state = "check";
         this.hostel_name = hostel_name;
         this.address = address;
         this.description = description;
         this.member_id = member_id;
+        this.user = user;
         this.type = type;
+    }
+
+    public Apply() {
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getDescription() {

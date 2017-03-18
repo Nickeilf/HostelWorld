@@ -1,6 +1,7 @@
 package com.nick.controller;
 
 import com.nick.bean.User_dup;
+import com.nick.service.LoginService;
 import com.nick.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ import java.util.Calendar;
 public class PayController {
     @Autowired
     private PayService payService;
+    @Autowired
+    private LoginService loginService;
 
     @ResponseBody
     @RequestMapping("/pay")
@@ -76,6 +79,9 @@ public class PayController {
         }else{
             boolean success=payService.recharge(account,password,amount,user.getLogin());
             if(success){
+
+                User_dup user_dup = loginService.getUser(user.getLogin());
+                session.setAttribute("user",user_dup);
                 return new ModelAndView("redirect:/personal");
             }else{
                 mv.setViewName("pay");

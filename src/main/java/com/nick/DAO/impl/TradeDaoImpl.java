@@ -1,6 +1,7 @@
 package com.nick.DAO.impl;
 
 import com.nick.DAO.TradeDao;
+import com.nick.bean.Manager;
 import com.nick.bean.Trade;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -36,5 +37,12 @@ public class TradeDaoImpl extends BaseDaoImpl implements TradeDao {
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setInteger(0,amount);
         query.executeUpdate();
+    }
+
+    @Override
+    public Manager getManager() {
+        String hql="from Manager";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        return (Manager) query.uniqueResult();
     }
 }

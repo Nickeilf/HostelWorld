@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -28,11 +29,8 @@
                 <a class="page-title">审批申请</a>
 
                 <ul id="top-nav-mobile" class="right hide-on-med-and-down" style="margin: 36px">
-                    <li class="white-text">Hostel账户余额:XXXX ¥</li>
+                    <li class="white-text">Hostel账户余额:${manager.balance} ¥</li>
                     &nbsp;&nbsp;&nbsp;
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                        登出
-                    </button>
                 </ul>
             </div>
         </div>
@@ -61,17 +59,33 @@
     <div class="container">
         <div class="row">
             <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                <li class="">
+                <c:forEach var="apply" items="${apply}" varStatus="status">
+                    <li class="">
                     <div class="collapsible-header">
-                        <i class="material-icons">room</i>
-                        客栈名
+
+                        <i class="material-icons">
+                            <c:if test="${apply.type=='apply'}">
+                                room
+                            </c:if>
+                            <c:if test="${apply.type=='modify'}">
+                                loop
+                            </c:if>
+                        </i>
+                        ${apply.hostel_name}
+                        <c:if test="${apply.type=='apply'}">
+                            (开店申请)
+                        </c:if>
+                        <c:if test="${apply.type=='modify'}">
+                            (修改申请)
+                        </c:if>
                     </div>
                     <div class="collapsible-body" style="display: none;">
                         <span>
                             <div class="row">
                                 <div class="col m8">
-                                    账户余额：1000¥<br>
-                                    地址：XXXX<br>
+                                    申请用户:${apply.user}<br>
+                                    地址：${apply.address}<br>
+                                    申请时间:${apply.apply_time}<br>
                                     <br>
                                 </div>
                                 <div class="col m4">
@@ -80,38 +94,12 @@
                                     </button>
                                 </div>
                             </div>
-                            描述啊啊啊
+                            ${apply.description}
 
                         </span>
                     </div>
                 </li>
-                <li class="">
-                    <div class="collapsible-header">
-                        <i class="material-icons">loop</i>
-                        客栈名
-                    </div>
-                    <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m8">
-                                    账户余额：1000¥<br>
-                                    地址：XXXX<br>
-                                    <br>
-                                </div>
-                                <div class="col m4">
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                                        通过
-                                    </button>
-                                </div>
-                            </div>
-                            描述啊啊啊
-                        </span>
-                    </div>
-                </li>
-                <li class="">
-                    <div class="collapsible-header"><i class="material-icons">loop</i>Third</div>
-                    <div class="collapsible-body" style="display: none;"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
-                </li>
+                </c:forEach>
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 package com.nick.DAO;
 
+import com.nick.bean.Manager;
 import com.nick.bean.Trade;
 
 /**
@@ -11,4 +12,7 @@ public interface TradeDao {
     public int getMaxTrade();
 
     public void managerAccount(int amount);
+
+    public Manager getManager();
+
 }
