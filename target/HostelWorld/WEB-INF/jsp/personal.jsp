@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -35,13 +36,29 @@
                     </ul>
                 </div>
 
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="hostel" class="grey-text">客栈</a></li>
-                    <li><a href="apply" class="grey-text">成为店家</a></li>
-                    <li><a href="register"class="grey-text">注册</a></li>
-                    <li><a href="login"class="grey-text">登录</a></li>
-                </ul>
+                <c:if test="${empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li><a href="register"class="grey-text">注册</a></li>
+                        <li><a href="login"class="grey-text">登录</a></li>
+                    </ul>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li>
+                            <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
+                            <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
+                                <li><a href="personal">个人主页</a></li>
+                                <li><a href="logout">登出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </c:if>
             </div>
         </div>
     </nav>
@@ -52,6 +69,7 @@
     <div class="row">
         <div class="col m8 offset-m2">
             <div id="card-info" class="section scroll-spy underline">
+                <p style="color: #ff5a5f;">${message}</p>
                 <h3 class="header">
                     会员卡信息
                 </h3>
@@ -65,52 +83,71 @@
                         <div class="row">
                             <div class="col m12">
                                 <br>
-                                <p>卡号:m10101011</p>
-                                <p>状态:已激活</p>
-                                <p>上次消费时间:2017-3-5</p>
-                                <p>会员卡余额:1000</p>
-                                <p>会员卡等级:3</p>
+                                <p>卡号:${member.member_id}</p>
+
+                                    <c:if test="${member.state =='invalid'}">
+                                        <p style="color: #ff5a5f;">状态:未激活</p>
+                                    </c:if>
+                                    <c:if test="${member.state =='cancel'}">
+                                        <p>状态:已作废</p>
+                                    </c:if>
+                                    <c:if test="${member.state =='use'}">
+                                        <p style="color: #26a69a;">状态:已激活</p>
+                                    </c:if>
+                                    <c:if test="${member.state =='suspend'}">
+                                        <p>状态:暂停使用</p>
+                                    </c:if>
+                                <p>上次消费时间:${member.last_pay}</p>
+                                <p>会员卡余额:${member.balance}</p>
+                                <p>会员卡等级:${member.level}</p>
                             </div>
                             <div class="col m12">
-                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">充值</button>
-                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="margin-top: 10px">取消资格</button>
+                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px" onclick="window.location.href='pay'">充值</button>
+                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="margin-top: 10px" onclick="window.location.href='cancel'">取消资格</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
+            
+            <c:if test="${member.state != 'invalid'}">
             <div id="personal-info" class="section scroll-spy underline">
                 <h3 class="header">
                     会员信息
                 </h3>
                 <div class="row">
                 <div class="input-field col s6">
-                    <input value="尼克" id="nickname" type="text">
+                    <input value="${member.name}" id="nickname" type="text">
                     <label for="nickname">昵称</label>
                 </div>
                 <div class="input-field col s6">
-                    <input value="13212312312" id="phone" type="number">
+                    <input value="${member.phone}" id="phone" type="number">
                     <label for="phone">电话</label>
                 </div>
+                <div class="input-field col s6">
+                    <input value="${member.email}" id="email" type="email">
+                    <label for="email">邮箱</label>
+                </div>
 
-                <div class="col m6 offset-m6">
+                <div class="col m6">
                     <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">修改</button>
                 </div>
                 </div>
+                <br>
                 <div class="row">
                 <div class="col s6">
-                    当前积分:1000
+                    当前积分:${member.point}
                 </div>
 
                 <div class="col s6">
-                    卡余额:2000元
+                    卡余额:${member.balance}元
                 </div>
 
                     <div class="col m12">
                         <p class="range-field">
                             <label for="point2balance">积分转余额(20积分=1元)</label>
-                            <input type="range" id="point2balance" min="0" max="100" />
+                            <input type="range" id="point2balance" min="0" max="${member.point}" />
                         </p>
                     </div>
                     <div class="col m6 offset-m6">
@@ -211,6 +248,7 @@
                     统计信息
                 </h3>
             </div>
+            </c:if>
 
         </div>
         <div class="col hide-on-small-only m3 l2">
@@ -266,6 +304,18 @@
     $(document).ready(function(){
         $('.scrollspy').scrollSpy();
     });
+
+    $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrainWidth: false, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: 0, // Spacing from edge
+                belowOrigin: false, // Displays dropdown below the button
+                alignment: 'left', // Displays dropdown with edge aligned to the left of button
+                stopPropagation: false // Stops event propagation
+            }
+    );
 </script>
 </body>
 </html>

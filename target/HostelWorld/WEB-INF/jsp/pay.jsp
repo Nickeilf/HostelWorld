@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -28,6 +29,7 @@
                 <embed src="/HostelWorld/pic/hotel.svg" width="64" height="64"
                        type="image/svg+xml"
                        pluginspage="http://www.adobe.com/svg/viewer/install/"></embed>
+
                 <%--<object id="front-page-logo" type="image/svg+xml" data="/HostelWorld/pic/hotel.svg">Your browser does not support SVG</object>--%>
             </a>
             <div class="row">
@@ -39,14 +41,29 @@
                     </ul>
                 </div>
 
-
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="hostel" class="grey-text">客栈</a></li>
-                    <li><a href="apply" class="grey-text">成为店家</a></li>
-                    <li><a href="register"class="grey-text">注册</a></li>
-                    <li><a href="login"class="grey-text">登录</a></li>
-                </ul>
+                <c:if test="${empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li><a href="register"class="grey-text">注册</a></li>
+                        <li><a href="login"class="grey-text">登录</a></li>
+                    </ul>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li>
+                            <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
+                            <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
+                                <li><a href="personal">个人主页</a></li>
+                                <li><a href="logout">登出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </c:if>
             </div>
         </div>
     </nav>
@@ -56,7 +73,7 @@
     <br>
     <div class="row">
         <div class="col m6 offset-m3">
-            <form class="col s12">
+            <form class="col s12" name="pay-form" action="recharge" method="post" onsubmit="return check()">
                 <h3 class="form-signin-heading">在线充值</h3>
                 <%--<label for="inputEmail" class="sr-only">User name</label>--%>
                 <%--<input type="text" id="inputEmail" class="form-control" placeholder="User name" required="" autofocus="">--%>
@@ -64,20 +81,20 @@
                 <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="amount" type="number">
+                        <input id="amount" name="amount" type="number">
                         <label for="amount">充值金额</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="account" type="text">
+                        <input id="account" name="account" type="text">
                         <label for="account">银行账户</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password">
+                        <input id="password" name="password" type="password">
                         <label for="password">密码</label>
                     </div>
                 </div>
@@ -127,6 +144,33 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
+
+    function check() {
+        var amount = document.getElementById("amount").value;
+        var account = document.getElementById("account").value;
+        var password = document.getElementById("password").value;
+
+        var success=true;
+        if(amount==null||amount==''){
+            Materialize.toast("金额不能为空", 2000);
+            success=false;
+        }
+        if(password==null||password==''){
+            Materialize.toast("密码不能为空", 2000);
+            success=false;
+        }
+        if(account==null||account==''){
+            Materialize.toast("银行账户不能为空", 2000);
+            success=false;
+        }
+
+        if(amount<0){
+            Materialize.toast("充值金额不能为负", 2000);
+            success=false;
+        }
+
+        return success;
+    }
     $(document).ready(function() {
         $('input#hostel,textarea#description').characterCounter();
     });

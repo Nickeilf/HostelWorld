@@ -55,10 +55,17 @@ public class MemberController {
                 mv.setViewName("manage-approve");
             }
         }
-
-
-
         return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "cancel")
+    public ModelAndView cancel(HttpSession session){
+        User_dup user_dup = (User_dup) session.getAttribute("user");
+
+        memberService.cancel(user_dup.getLogin());
+
+        return new ModelAndView("redirect:/personal");
     }
 
 

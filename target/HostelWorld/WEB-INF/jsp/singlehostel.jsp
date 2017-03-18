@@ -30,6 +30,7 @@
                 <embed src="/HostelWorld/pic/hotel.svg" width="64" height="64"
                        type="image/svg+xml"
                        pluginspage="http://www.adobe.com/svg/viewer/install/"></embed>
+
                 <%--<object id="front-page-logo" type="image/svg+xml" data="/HostelWorld/pic/hotel.svg">Your browser does not support SVG</object>--%>
             </a>
             <div class="row">
@@ -41,14 +42,29 @@
                     </ul>
                 </div>
 
-
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="hostel" class="grey-text">客栈</a></li>
-                    <li><a href="apply" class="grey-text">成为店家</a></li>
-                    <li><a href="register"class="grey-text">注册</a></li>
-                    <li><a href="login"class="grey-text">登录</a></li>
-                </ul>
+                <c:if test="${empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li><a href="register"class="grey-text">注册</a></li>
+                        <li><a href="login"class="grey-text">登录</a></li>
+                    </ul>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li>
+                            <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
+                            <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
+                                <li><a href="personal">个人主页</a></li>
+                                <li><a href="logout">登出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </c:if>
             </div>
         </div>
     </nav>
@@ -78,7 +94,7 @@
                     <h3>
                         <c:out value="${hostel.hostel_name}"></c:out>
                     </h3>
-                    <h5>
+                    <h5 style="color: #26a69a;">
                         <c:out value="${plan.room}"></c:out>
                     </h5>
                     <p><c:out value="${hostel.address}"></c:out></p>
@@ -151,31 +167,24 @@
 
             <div class="row">
                 <div class="col m12">
-                    <h5 class="promo-caption">更多照片</h5>
+                    <h5 class="promo-caption">该客栈的其他房源</h5>
                 </div>
 
                 <div class="col m12">
-                    <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="pic/house1.jpg">
+                    <c:forEach var="plan" items="${related}" varStatus="status">
+                        <div class="col s12 m6 l4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <a  href="/HostelWorld/singleHostel?id=${plan.plan_id}">
+                                        <img src="pic/house${status.count%3}.jpg">
+                                    </a>
+                                </div>
+                                <div class="card-content">
+                                    <p style="font-size: 2px"><c:out value="${plan.room}"/></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="pic/house1.jpg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="pic/house1.jpg">
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -186,52 +195,55 @@
         <%--付款界面--%>
         <div class="col m5">
             <div class="pay-panel">
-                <div class="row">
-                    <div class="col m6">
-                        <label for="fromdate" class="SearchForm__label"><span>入住时间</span></label>
-                        <input type="date" class="datepicker" id="fromdate">
-                    </div>
-                    <div class="col m6">
-                        <label for="fromdate" class="SearchForm__label"><span>退房时间</span></label>
-                        <input type="date" class="datepicker" id="todate">
-                    </div>
 
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <label for="human">人数</label>
-                        <input type="number" id="human">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m6">
-                        <p>
-                            <input name="group1"  class="with-gap" type="radio" id="test1" checked/>
-                            <label for="test1" style="padding-top:0px;padding-bottom: 0px">会员卡付款</label>
-                        </p>
-                    </div>
-                    <div class="col m6">
-                        <p>
-                            <input name="group1" class="with-gap" type="radio" id="test2" />
-                            <label for="test2" style="padding-top:0px;padding-bottom: 0px">到店付款</label>
-                        </p>
-                    </div>
-                </div>
+                <form name="buy-form" action="buy" method="post" onsubmit="return check()">
 
-
-
-
-                <button type="submit" class="btn btn-primary btn-large btn-block" data-reactid="95">
-                    <div data-reactid="96"><div class="hide-lg" data-reactid="97">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="notInline_uhlm2" style="fill:currentColor;height:1em;width:1em;" data-reactid="98"><path fill-rule="evenodd" d="M23.53 22.47l-6.807-6.808A9.455 9.455 0 0 0 19 9.5 9.5 9.5 0 1 0 9.5 19c2.353 0 4.502-.86 6.162-2.277l6.808 6.807a.75.75 0 0 0 1.06-1.06zM9.5 17.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" data-reactid="99"></path></svg>
-                    </div>
-                        <span class="SearchForm__submit-text hide-md" data-reactid="100"><span data-reactid="101">申请预定</span></span>
-                    </div>
-                </button>
+                    <input type="text" hidden name="hostel_id" id="hostel_id" value="${hostel.hostel_id}" style="display: none">
+                    <input type="text" hidden name="plan_id" id="plan_id" value="${plan.plan_id}" style="display: none">
+                    <input type="text" hidden name="price" id="price" value="${plan.price}" style="display: none">
+                    <div class="row">
+                        <div class="col m6">
+                            <label for="fromdate" class="SearchForm__label"><span>入住时间</span></label>
+                            <input type="date" class="datepicker" id="fromdate" name="fromdate">
+                        </div>
+                        <div class="col m6">
+                            <label for="fromdate" class="SearchForm__label"><span>退房时间</span></label>
+                            <input type="date" class="datepicker" id="todate" name="todate">
+                        </div>
 
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col m12">
+                            <label for="human">人数</label>
+                            <input type="number" id="human" name="human">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m6">
+                            <p>
+                                <input name="card"  class="with-gap" type="radio" id="card" value="card"checked/>
+                                <label for="card" style="padding-top:0px;padding-bottom: 0px">会员卡付款</label>
+                            </p>
+                        </div>
+                        <div class="col m6">
+                            <p>
+                                <input name="card" class="with-gap" type="radio" id="cash" value="cash" />
+                                <label for="cash" style="padding-top:0px;padding-bottom: 0px">到店付款</label>
+                            </p>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large btn-block" data-reactid="95">
+                        <div data-reactid="96"><div class="hide-lg" data-reactid="97">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="notInline_uhlm2" style="fill:currentColor;height:1em;width:1em;" data-reactid="98"><path fill-rule="evenodd" d="M23.53 22.47l-6.807-6.808A9.455 9.455 0 0 0 19 9.5 9.5 9.5 0 1 0 9.5 19c2.353 0 4.502-.86 6.162-2.277l6.808 6.807a.75.75 0 0 0 1.06-1.06zM9.5 17.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" data-reactid="99"></path></svg>
+                        </div>
+                            <span class="SearchForm__submit-text hide-md" data-reactid="100"><span data-reactid="101">申请预定</span></span>
+                        </div>
+                    </button>
+                </form>
+
             </div>
+        </div>
+    </div>
 
         </div>
 
@@ -274,10 +286,44 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
+    function check() {
+        var fromdate=document.getElementById("fromdate").value;
+        var todate=document.getElementById("todate").value;
+        var human=document.getElementById("human").value;
+        var card=document.getElementById("card").checked;
+
+        var success=true;
+
+        if(fromdate==null||fromdate==''){
+            Materialize.toast("入住日期不能为空", 2000);
+            success=false;
+        }
+        if(todate==null||todate==''){
+            Materialize.toast("退房日期不能为空", 2000);
+            success=false;
+        }
+        if(human==null||human==''){
+            Materialize.toast("人数日期不能为空", 2000);
+            success=false;
+        }
+        if(fromdate!=null&&fromdate!=''&&todate!=null&&todate!=''){
+            var d1=toDate(fromdate);
+            var d2=toDate(todate);
+            if(d1>=d2){
+                Materialize.toast("入住日期不能晚于退房日期", 2000);
+                success=false;
+            }
+
+        }
+
+        return success;
+    }
+    
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 17 // Creates a dropdown of 15 years to control year
+        selectYears: 17, // Creates a dropdown of 15 years to control year
+        format:'yyyy-mm-dd'
     });
 </script>
 </body>

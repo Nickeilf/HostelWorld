@@ -64,25 +64,25 @@
     <div class="row">
     <div class="col l4 offset-l4">
 
-    <form class="form-signin">
+    <form class="form-signin"  id="login-form" name="login-form" method="post" action="checkLogin" onsubmit="return check()">
         <h3 class="form-signin-heading">登录</h3>
+        <p style="color: #ff5a5f;">${message}</p>
         <%--<label for="inputEmail" class="sr-only">User name</label>--%>
         <%--<input type="text" id="inputEmail" class="form-control" placeholder="User name" required="" autofocus="">--%>
         <%--<label for="inputPassword" class="sr-only">Password</label>--%>
         <%--<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">--%>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="login" type="text" class="validate">
-                <label for="login">用户名</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="login" name="login" type="text" class="validate">
+                    <label for="login">用户名</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">密码</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password" class="validate">
+                    <label for="password">密码</label>
+                </div>
             </div>
-        </div>
-
         <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 20px">登录</button>
     </form>
     </div>
@@ -124,6 +124,25 @@
         </div>
     </div>
 </footer>
+
+<script>
+    function check() {
+        var login=document.getElementById("login").value;
+        var password =document.getElementById("password").value;
+        var success=true;
+        if(login==null||login==''){
+            Materialize.toast("用户名不能为空", 2000);
+            success=false;
+        }
+        if(password==null||password==''){
+            Materialize.toast("密码不能为空", 2000);
+            success=false;
+        }
+
+        return success;
+
+    }
+</script>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>

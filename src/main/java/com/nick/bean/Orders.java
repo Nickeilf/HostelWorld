@@ -1,34 +1,53 @@
 package com.nick.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by nick on 2017/3/9.
  */
-public class Order {
+@Entity
+@Table(name = "orders")
+public class Orders {
+    @Id
     private int order_id;
     private Timestamp order_time;
     private String state;
     private int amount;//总价
     private String hostel_id;
-    private Date from;
-    private Date to;
+    private Date fromdate;
+    private Date todate;
     private String user_login;
-    private String type;//房型
+    private String type;//支付方式
     private int number;//人数
+    private String plan_id;
 
-    public Order(int order_id, Timestamp order_time, String state, int amount, String hostel_id, Date from, Date to, String user_login, String type, int number) {
+    public Orders(int order_id, Timestamp order_time, String state, int amount, String hostel_id, Date fromdate, Date todate, String user_login, String type, int number, String plan_id) {
         this.order_id = order_id;
         this.order_time = order_time;
         this.state = state;
         this.amount = amount;
         this.hostel_id = hostel_id;
-        this.from = from;
-        this.to = to;
+        this.fromdate = fromdate;
+        this.todate = todate;
         this.user_login = user_login;
         this.type = type;
         this.number = number;
+        this.plan_id = plan_id;
+    }
+
+    public Orders() {
+    }
+
+    public String getPlan_id() {
+        return plan_id;
+    }
+
+    public void setPlan_id(String plan_id) {
+        this.plan_id = plan_id;
     }
 
     public int getOrder_id() {
@@ -71,20 +90,20 @@ public class Order {
         this.hostel_id = hostel_id;
     }
 
-    public Date getFrom() {
-        return from;
+    public Date getFromdate() {
+        return fromdate;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
+    public void setFromdate(Date fromdate) {
+        this.fromdate = fromdate;
     }
 
-    public Date getTo() {
-        return to;
+    public Date getTodate() {
+        return todate;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public void setTodate(Date todate) {
+        this.todate = todate;
     }
 
     public String getUser_login() {

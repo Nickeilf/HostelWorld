@@ -16,4 +16,8 @@ public interface MemberDao {
 
     public Member getMemberByLogin(String login);
 
+    public void updateCredit(Member member,int amount,String cardOrCash);
+
+    public void cancel(String login);
+
 }

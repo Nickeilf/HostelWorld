@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dca07f3-4b20-41c3-8330-465657a1e5f1" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/nick/bean/Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/bean/Orders.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Apply.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Apply.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Hostel.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Hostel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Member.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Member.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Plan.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/bean/Plan.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/DAO/MemberDao.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/DAO/MemberDao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/DAO/impl/MemberDaoImpl.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/DAO/impl/MemberDaoImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/controller/MemberController.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/controller/MemberController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/controller/mainController.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/controller/mainController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/service/MemberService.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/service/MemberService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/service/impl/MemberServiceImpl.class" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/com/nick/service/impl/MemberServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/nick/DAO/MemberDao.class" afterPath="$PROJECT_DIR$/target/classes/com/nick/DAO/MemberDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/nick/DAO/impl/MemberDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/nick/DAO/impl/MemberDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/nick/bean/Apply.class" afterPath="$PROJECT_DIR$/target/classes/com/nick/bean/Apply.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/nick/bean/Hostel.class" afterPath="$PROJECT_DIR$/target/classes/com/nick/bean/Hostel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/nick/bean/Member.class" afterPath="$PROJECT_DIR$/target/classes/com/nick/bean/Member.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/nick/bean/Plan.class" afterPath="$PROJECT_DIR$/target/classes/com/nick/bean/Plan.class" />
@@ -22,35 +22,21 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/DAO/MemberDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/DAO/MemberDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/DAO/PlanDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/DAO/PlanDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/PlanDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/PlanDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/bean/Member.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/bean/Member.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/controller/ApplyController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/controller/ApplyController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/controller/HostelController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/controller/HostelController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/controller/LoginController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/controller/MemberController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/controller/MemberController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/controller/PayController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/controller/PayController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/service/MemberService.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/service/MemberService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/service/PlanService.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/service/PlanService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/service/impl/MemberServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/service/impl/MemberServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nick/service/impl/PlanServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/nick/service/impl/PlanServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/apply.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/apply.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pay.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pay.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/singlehostel.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/singlehostel.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/classes/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/hostel.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/hostel.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/index.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/login.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/pay.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/pay.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/personal.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/personal.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/register.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/register.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/singlehostel.jsp" afterPath="$PROJECT_DIR$/target/HostelWorld/WEB-INF/jsp/singlehostel.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dao.xml" afterPath="$PROJECT_DIR$/target/classes/dao.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" afterPath="$PROJECT_DIR$/target/classes/jdbc.properties" />
     </list>
@@ -89,23 +75,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HostelController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/HostelController.java">
+      <file leaf-file-name="MemberDaoImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1264">
-              <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="456">
+              <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/PayController.java">
+      <file leaf-file-name="personal.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+            <state relative-caret-position="255">
+              <caret line="105" column="172" selection-start-line="105" selection-start-column="172" selection-end-line="105" selection-end-column="172" />
               <folding />
             </state>
           </provider>
@@ -137,13 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel-info.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manage-check.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manage-info.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/manage-approve.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel-modify.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel-register.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel-plan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/costume/personal.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/Hostel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/service/impl/MainService.java" />
@@ -159,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MainDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/HostelDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/HostelDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/Plan.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/PlanDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/PlanDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/service/PlanService.java" />
@@ -169,8 +145,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pay.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/singlehostel.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/apply.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/service/LoginService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/LoginDao.java" />
@@ -179,15 +153,25 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/controller/ApplyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/LoginDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/MemberDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nick/service/MemberService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nick/service/impl/MemberServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/Member.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nick/controller/MemberController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/singlehostel.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/Plan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/Orders.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/service/PayService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/PayDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nick/controller/PayController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/bean/BankAccount.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pay.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/PayDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/service/impl/PayServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/service/MemberService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/MemberDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/service/impl/MemberServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/controller/MemberController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp" />
       </list>
     </option>
   </component>
@@ -288,6 +272,7 @@
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -648,7 +633,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1252,12 +1236,13 @@
       <workItem from="1489145520730" duration="1833000" />
       <workItem from="1489147509224" duration="35652000" />
       <workItem from="1489317608700" duration="49312000" />
-      <workItem from="1489665499563" duration="13531000" />
+      <workItem from="1489665499563" duration="14769000" />
+      <workItem from="1489759174892" duration="10012000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130080000" />
+    <option name="totallyTimeSpent" value="141330000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1291,11 +1276,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46259543" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21526718" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2584814" sideWeight="0.5083969" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2584814" sideWeight="0.49160305" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2584814" sideWeight="0.51785713" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2584814" sideWeight="0.48214287" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2584814" sideWeight="0.51300234" order="2" side_tool="true" content_ui="tabs" />
@@ -1364,47 +1349,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel-modify.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="75" column="18" selection-start-line="72" selection-start-column="12" selection-end-line="75" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pic/credit-card.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/costume/personal.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/MainService.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/controller.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/Hostel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1480,7 +1424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1494,33 +1437,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/Plan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/PlanServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1722#1723#0" expanded="false" />
-            <element signature="e#1778#1779#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1544,30 +1465,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/PlanDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/User_dup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#448#449#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#682#683#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#448#449#0" expanded="false" />
+            <element signature="e#476#477#0" expanded="false" />
+            <element signature="e#518#519#0" expanded="false" />
+            <element signature="e#552#553#0" expanded="false" />
+            <element signature="e#583#584#0" expanded="false" />
+            <element signature="e#610#611#0" expanded="false" />
+            <element signature="e#650#651#0" expanded="false" />
+            <element signature="e#682#683#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1584,9 +1495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="74" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1598,49 +1506,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pay.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="68" column="6" selection-start-line="68" selection-start-column="6" selection-end-line="68" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/apply.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="69" column="6" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="183" column="63" selection-start-line="183" selection-start-column="7" selection-end-line="183" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/singlehostel.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1666,101 +1536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/LoginDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/MemberServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-          <folding>
-            <element signature="e#884#885#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="57" column="42" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-546">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="137" column="20" selection-start-line="137" selection-start-column="20" selection-end-line="137" selection-end-column="20" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/MemberController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/MemberDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/MemberService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1769,19 +1544,7 @@
         <state relative-caret-position="165">
           <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/LoginServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#498#499#0" expanded="true" />
-            <element signature="e#556#557#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1802,20 +1565,234 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="201" column="23" selection-start-line="187" selection-start-column="8" selection-end-line="201" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hostel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="225" column="23" selection-start-line="202" selection-start-column="8" selection-end-line="225" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/HostelController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1264">
-          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+        <state relative-caret-position="-1185">
+          <caret line="37" column="167" selection-start-line="37" selection-start-column="92" selection-end-line="37" selection-end-column="167" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/singlehostel.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="202" column="112" selection-start-line="202" selection-start-column="112" selection-end-line="202" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/Plan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/PlanDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/LoginServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="134" column="9" selection-start-line="123" selection-start-column="8" selection-end-line="134" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/Orders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/PlanServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+          <folding>
+            <element signature="e#1722#1723#0" expanded="true" />
+            <element signature="e#1778#1779#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/LoginDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/bean/BankAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pay.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="75" column="92" selection-start-line="75" selection-start-column="92" selection-end-line="75" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/PayController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="27" column="75" selection-start-line="27" selection-start-column="75" selection-end-line="27" selection-end-column="75" />
+        <state relative-caret-position="525">
+          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/PayDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/PayDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/PayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/PayServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="40" column="55" selection-start-line="40" selection-start-column="55" selection-end-line="40" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/impl/MemberServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+          <folding>
+            <element signature="e#996#997#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/controller/MemberController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/service/MemberService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/MemberDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nick/DAO/impl/MemberDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="75" column="30" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/personal.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="105" column="172" selection-start-line="105" selection-start-column="172" selection-end-line="105" selection-end-column="172" />
           <folding />
         </state>
       </provider>

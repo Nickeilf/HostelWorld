@@ -84,27 +84,26 @@
                             <div class="col m12">
                                 <br>
                                 <p>卡号:${member.member_id}</p>
-                                <p>状态:
+
                                     <c:if test="${member.state =='invalid'}">
-                                        未激活
+                                        <p style="color: #ff5a5f;">状态:未激活</p>
                                     </c:if>
                                     <c:if test="${member.state =='cancel'}">
-                                        已作废
+                                        <p>状态:已作废</p>
                                     </c:if>
                                     <c:if test="${member.state =='use'}">
-                                        已激活
+                                        <p style="color: #26a69a;">状态:已激活</p>
                                     </c:if>
                                     <c:if test="${member.state =='suspend'}">
-                                        暂停使用
+                                        <p>状态:暂停使用</p>
                                     </c:if>
-                                </p>
                                 <p>上次消费时间:${member.last_pay}</p>
                                 <p>会员卡余额:${member.balance}</p>
                                 <p>会员卡等级:${member.level}</p>
                             </div>
                             <div class="col m12">
-                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px">充值</button>
-                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="margin-top: 10px">取消资格</button>
+                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="border-color: #26a69a;background: #26a69a;margin-top: 10px" onclick="window.location.href='pay'">充值</button>
+                                <button class="btn btn-lg btn-primary btn-block login-button" type="submit" style="margin-top: 10px" onclick="window.location.href='cancel'">取消资格</button>
                             </div>
                         </div>
                     </div>

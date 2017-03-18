@@ -42,4 +42,9 @@ public class MemberServiceImpl implements MemberService {
         return memberDao.getMemberByLogin(login);
     }
 
+    @Override
+    public void cancel(String login) {
+        memberDao.cancel(login);
+    }
+
 }

@@ -16,4 +16,6 @@ public interface MemberService {
     public Member getMember(String id);
 
     public Member getMemberByLogin(String login);
+
+    public void cancel(String login);
 }

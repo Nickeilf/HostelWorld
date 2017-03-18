@@ -29,6 +29,7 @@
                 <embed src="/HostelWorld/pic/hotel.svg" width="64" height="64"
                        type="image/svg+xml"
                        pluginspage="http://www.adobe.com/svg/viewer/install/"></embed>
+
                 <%--<object id="front-page-logo" type="image/svg+xml" data="/HostelWorld/pic/hotel.svg">Your browser does not support SVG</object>--%>
             </a>
             <div class="row">
@@ -40,14 +41,29 @@
                     </ul>
                 </div>
 
-
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index" class="grey-text">首页</a></li>
-                    <li><a href="hostel" class="grey-text">客栈</a></li>
-                    <li><a href="apply" class="grey-text">成为店家</a></li>
-                    <li><a href="register"class="grey-text">注册</a></li>
-                    <li><a href="login"class="grey-text">登录</a></li>
-                </ul>
+                <c:if test="${empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li><a href="register"class="grey-text">注册</a></li>
+                        <li><a href="login"class="grey-text">登录</a></li>
+                    </ul>
+                </c:if>
+                <c:if test="${not empty sessionScope.user}">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index" class="grey-text">首页</a></li>
+                        <li><a href="hostel" class="grey-text">客栈</a></li>
+                        <li><a href="apply" class="grey-text">成为店家</a></li>
+                        <li>
+                            <a href="#"class="grey-text dropdown-button" data-activates="dropdown1">${sessionScope.user.login}</a>
+                            <ul id='dropdown1' class='dropdown-content' style="padding-left: 0px">
+                                <li><a href="personal">个人主页</a></li>
+                                <li><a href="logout">登出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </c:if>
             </div>
         </div>
     </nav>
@@ -62,24 +78,24 @@
         <form method="post" action="hostel" name="search-form" onsubmit="return check()">
         <div class="col m3">
             <label for="search-location" class="SearchForm__label"><span>地点</span></label>
-            <input type="text" class="LocationInput input-large" name="location" id="location" placeholder="目的地，城市" autocomplete="off" id="search-location" value="" data-reactid="20">
+            <input type="text" class="LocationInput input-large" name="location" id="location" placeholder="目的地，城市" autocomplete="off" id="search-location" value="${location}" data-reactid="20">
         </div>
 
 
         <div class="col m5 inside-search-border" style="border-left: 1px solid #dce0e0;border-right: 1px solid #dce0e0">
             <div class="col m6">
                 <label for="checkin" class="SearchForm__label"><span>入住时间</span></label>
-                <input type="date" class="datepicker" name="checkin" id="checkin">
+                <input type="date" class="datepicker" name="checkin" value="${checkin}" id="checkin">
             </div>
             <div class="col m6">
                 <label for="checkout" class="SearchForm__label"><span>退房时间</span></label>
-                <input type="date" class="datepicker" name="checkout" id="checkout">
+                <input type="date" class="datepicker" name="checkout" value="${checkout}" id="checkout">
             </div>
         </div>
         <div class="col m4">
             <div class="col m6">
                 <label for="human">人数</label>
-                <input type="number" id="human" name="human">
+                <input type="number" id="human" value="${human}" name="human">
             </div>
             <div class="col m6" style="padding: 16px">
                 <button type="submit" class="btn btn-primary btn-large btn-block" data-reactid="95">
@@ -131,28 +147,6 @@
 
 
     </div>
-
-    <%--分页--%>
-    <div class="pagination pagination-responsive" data-reactid="2567">
-        <ul class="list-unstyled" data-reactid="2568">
-            <li class="active" data-reactid="2569" style="font-size: 14px;line-height: 1.43; background: #fff">
-                <a href="/s/?page=1" data-prevent-default="true" data-reactid="2570">1</a>
-            </li>
-            <li class="" data-reactid="2571"style="font-size: 14px;line-height: 1.43; background: #fff">
-                <a href="/s/?page=2" rel="next" data-prevent-default="true" data-reactid="2572">2</a>
-            </li>
-            <li class="" data-reactid="2573"style="font-size: 14px;line-height: 1.43; background: #fff">
-                <a href="/s/?page=3" rel="next" data-prevent-default="true" data-reactid="2574">3</a>
-            </li>
-            <li class="gap" data-reactid="2575"style="font-size: 14px;line-height: 1.43; background: #fff">
-                <span class="gap" data-reactid="2576">…</span>
-            </li>
-            <li class="" style="font-size: 14px; line-height: 1.43; background: #fff">
-                <a href="/s/?page=17" rel="next" data-prevent-default="true" data-reactid="2578">17</a>
-            </li>
-
-    </ul>
-</div>
 </div>
 
 <br>
@@ -219,7 +213,22 @@
             success=false;
         }
 
+        if(checkin!=null&&checkin!=''&&checkout!=null&&checkout!=''){
+            var d1=toDate(checkin);
+            var d2=toDate(checkout);
+            if(d1>=d2){
+                Materialize.toast("入住日期不能晚于退房日期", 2000);
+                success=false;
+            }
+
+        }
+
         return success;
+    }
+
+    function toDate(str){
+        var sd=str.split("-");
+        return new Date(sd[0],sd[1],sd[2]);
     }
 
     $(document).ready(function(){

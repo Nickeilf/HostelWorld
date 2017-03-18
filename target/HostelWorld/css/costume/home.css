@@ -1,0 +1,11 @@
+.top{
+    height:400px;
+    min-height: 100px;
+}
+.full-height-jumbotron{
+    padding-bottom: 0
+}
+
+.input-search{
+    border-radius: 2px;
+}
