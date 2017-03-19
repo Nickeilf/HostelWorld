@@ -29,10 +29,6 @@
 
                 <ul id="top-nav-mobile" class="right hide-on-med-and-down" style="margin: 36px">
                     <li class="white-text">客栈账户余额:XXXX ¥</li>
-                    &nbsp;&nbsp;&nbsp;
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                        登出
-                    </button>
                 </ul>
             </div>
         </div>

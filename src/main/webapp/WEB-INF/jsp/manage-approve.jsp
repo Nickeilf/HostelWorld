@@ -30,7 +30,6 @@
 
                 <ul id="top-nav-mobile" class="right hide-on-med-and-down" style="margin: 36px">
                     <li class="white-text">Hostel账户余额:${manager.balance} ¥</li>
-                    &nbsp;&nbsp;&nbsp;
                 </ul>
             </div>
         </div>
@@ -89,9 +88,24 @@
                                     <br>
                                 </div>
                                 <div class="col m4">
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                                        通过
-                                    </button>
+                                    <form action="approveHostel" method="post">
+                                        <input name="hostel_name" value="${apply.hostel_name}"type="text" hidden style="display: none">
+                                        <input name="member_id" value="${apply.member_id}"type="text" hidden style="display: none">
+                                        <input name="address" value="${apply.address}"type="text" hidden style="display: none">
+                                        <input name="description" value="${apply.description}"type="text" hidden style="display: none">
+                                        <input name="login" value="${apply.user}"type="text" hidden style="display: none">
+                                        <input name="apply_id" value="${apply.apply_id}"type="text" hidden style="display: none">
+                                        <input name="type" value="${apply.type}"type="text" hidden style="display: none">
+                                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                                            通过
+                                        </button>
+                                    </form>
+                                    <form action="deny" method="post">
+                                        <input name="apply_id" value="${apply.apply_id}"type="text" hidden style="display: none">
+                                        <button class="btn waves-effect waves-light" type="submit" name="action" style="background: #ff5a5f;border-color: #ff5a5f">
+                                            否决
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             ${apply.description}

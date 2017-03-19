@@ -3,6 +3,8 @@ package com.nick.controller;
 import com.nick.bean.Hostel;
 import com.nick.bean.Member;
 import com.nick.bean.Plan;
+import com.nick.bean.User_dup;
+import com.nick.service.ApplyService;
 import com.nick.service.HostelService;
 import com.nick.service.MemberService;
 import com.nick.service.PlanService;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,8 @@ public class HostelController {
     private HostelService hostelService;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private ApplyService applyService;
 
     //搜索页
     @ResponseBody
@@ -79,8 +84,53 @@ public class HostelController {
     //修改信息
     @ResponseBody
     @RequestMapping(value = "/hostel/modify", method = RequestMethod.GET)
-    public ModelAndView modify() {
+    public ModelAndView modify(HttpSession session) {
         ModelAndView mv= new ModelAndView();
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Hostel hostel=hostelService.getHostelBylogin(user_dup.getLogin());
+
+            //寻找数据库现有的尚未审批的apply
+            boolean apply = applyService.findModify(user_dup.getLogin());
+            if(apply){
+                mv.addObject("message","已提交等待经理审批");
+                mv.addObject("applying","true");
+            }
+
+            mv.addObject("hostel",hostel);
+        }
+        mv.setViewName("hostel-modify");
+        return mv;
+    }
+
+    //修改信息
+    @ResponseBody
+    @RequestMapping(value = "/hostel/modify", method = RequestMethod.POST)
+    public ModelAndView modifyApply(HttpSession session,HttpServletRequest request) {
+        String hostel_name =request.getParameter("hostel");
+        String address=request.getParameter("address");
+        String description=request.getParameter("description");
+
+        ModelAndView mv= new ModelAndView();
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Hostel hostel=hostelService.getHostelBylogin(user_dup.getLogin());
+            //添加Apply
+            Member member = memberService.getMemberByLogin(user_dup.getLogin());
+
+            applyService.createModifyApply(hostel_name,address,description,member.getMember_id(),user_dup.getLogin());
+
+            //message
+            mv.addObject("message","已提交请等待审批");
+            mv.addObject("applying","true");
+            mv.addObject("hostel",hostel);
+        }
         mv.setViewName("hostel-modify");
         return mv;
     }

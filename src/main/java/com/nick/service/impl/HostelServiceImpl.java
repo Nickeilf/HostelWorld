@@ -19,4 +19,24 @@ public class HostelServiceImpl implements HostelService {
     public Hostel getHostel(String id) {
         return hostelDao.getHostel(id);
     }
+
+    @Override
+    public String getMaxId() {
+        return hostelDao.getMaxId();
+    }
+
+    @Override
+    public void createHostel(Hostel hostel) {
+        hostelDao.createHostel(hostel);
+    }
+
+    @Override
+    public Hostel getHostelBylogin(String login) {
+        return hostelDao.getHostelByLogin(login);
+    }
+
+    @Override
+    public void updateInfo(String name, String address, String description, String login) {
+        hostelDao.updateInfo(name,address,description,login);
+    }
 }

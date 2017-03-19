@@ -51,4 +51,27 @@ public class ApplyServiceImpl implements ApplyService{
     public boolean findApply(String login) {
         return applyDao.findApply(login);
     }
+
+    @Override
+    public boolean findModify(String login) {
+        return applyDao.findModify(login);
+    }
+
+    @Override
+    public void denyApply(String id) {
+        applyDao.denyApply(id);
+    }
+
+    @Override
+    public void approveApply(String id) {
+        applyDao.approveApply(id);
+    }
+
+    @Override
+    public void createModifyApply(String hostel, String address, String description, String memberId, String login) {
+        int max =applyDao.getMaxId();
+        Timestamp createTime = new Timestamp(new java.util.Date().getTime());
+        Apply apply = new Apply(max,createTime,hostel,address,description,memberId,login,"modify");
+        applyDao.addApply(apply);
+    }
 }

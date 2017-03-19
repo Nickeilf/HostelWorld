@@ -7,4 +7,12 @@ import com.nick.bean.Hostel;
  */
 public interface HostelService {
     public Hostel getHostel(String id);
+
+    public String getMaxId();
+
+    public void createHostel(Hostel hostel);
+
+    public Hostel getHostelBylogin(String login);
+
+    public void updateInfo(String name,String address,String description,String login);
 }

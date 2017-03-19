@@ -15,5 +15,11 @@ public interface ApplyDao {
 
     public boolean findApply(String login);
 
+    public boolean findModify(String login);
+
     public List<Apply> getAllCheckingApply();
+
+    public void approveApply(String id);
+    public void denyApply(String id);
+
 }

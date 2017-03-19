@@ -71,7 +71,7 @@ public class MemberController {
                 mv.addObject("cancel",cancel);
             }else{
                 //经理
-                mv.setViewName("manage-approve");
+                return new ModelAndView("redirect:/manage/approve");
             }
         }
         return mv;

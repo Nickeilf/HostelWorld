@@ -86,4 +86,19 @@ public class LoginDaoImpl extends BaseDaoImpl implements LoginDao {
         return (User_dup) query.uniqueResult();
     }
 
+    @Override
+    public void member2hostel(String login) {
+        String hql="update User u set u.type='hostel' where u.login=?";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,login);
+        query.executeUpdate();
+
+        hql="update User_dup u set u.type='hostel' where u.login=?";
+        query=sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,login);
+        query.executeUpdate();
+
+        System.out.println(login+"现在已经变成一个客栈店主了");
+    }
+
 }

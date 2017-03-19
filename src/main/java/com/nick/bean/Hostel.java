@@ -18,19 +18,28 @@ public class Hostel implements Serializable{
     private String address;
     private String description;
     private String member_id;
+    private String login;
 
-    public Hostel(int balance, String hostel_id, String hostel_name, String address,String description,String member_id) {
+    public Hostel(int balance, String hostel_id, String hostel_name, String address, String description, String member_id, String login) {
         this.balance = balance;
         this.hostel_id = hostel_id;
         this.hostel_name = hostel_name;
         this.address = address;
-        this.description=description;
-        this.member_id=member_id;
+        this.description = description;
+        this.member_id = member_id;
+        this.login = login;
     }
 
     public Hostel() {
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
     public String getMember_id() {
         return member_id;

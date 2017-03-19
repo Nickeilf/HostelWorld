@@ -1,6 +1,7 @@
 package com.nick.service.impl;
 
 import com.nick.DAO.ApplyDao;
+import com.nick.DAO.LoginDao;
 import com.nick.DAO.TradeDao;
 import com.nick.bean.Apply;
 import com.nick.bean.Manager;
@@ -20,6 +21,8 @@ public class ManageServiceImpl implements ManageService {
     private ApplyDao applyDao;
     @Autowired
     private TradeDao tradeDao;
+    @Autowired
+    private LoginDao loginDao;
 
     @Override
     public Manager getManager() {
@@ -29,5 +32,10 @@ public class ManageServiceImpl implements ManageService {
     @Override
     public List<Apply> getAllCheckingApply() {
         return applyDao.getAllCheckingApply();
+    }
+
+    @Override
+    public void user2hostelOwner(String login) {
+        loginDao.member2hostel(login);
     }
 }

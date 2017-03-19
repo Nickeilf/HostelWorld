@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -28,11 +29,7 @@
                 <a class="page-title">修改信息</a>
 
                 <ul id="top-nav-mobile" class="right hide-on-med-and-down" style="margin: 36px">
-                    <li class="white-text">客栈账户余额:XXXX ¥</li>
-                    &nbsp;&nbsp;&nbsp;
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                        登出
-                    </button>
+                    <li class="white-text">客栈账户余额:${hostel.balance} ¥</li>
                 </ul>
             </div>
         </div>
@@ -64,28 +61,33 @@
     <div class="container">
         <div class="row">
             <div class="col m8 offset-m2">
+                <p style="color: #ff5a5f;">${message}</p>
+                <c:if test="${empty message}">
+                <form name="modify-form" method="post" action="modify">
 
-            <div class="input-field col s12">
-                <input value="狗窝1号" id="hostel" type="text" data-length="10">
-                <label for="hostel">客栈名</label>
-            </div>
+                    <div class="input-field col s12">
+                        <input value="${hostel.hostel_name}" name="hostel" id="hostel" type="text" data-length="10">
+                        <label for="hostel">客栈名</label>
+                    </div>
 
-            <div class="input-field col s12">
-                <input value="狗窝大道101号" id="address" type="text">
-                <label for="address">客栈地址</label>
-            </div>
+                    <div class="input-field col s12">
+                        <input value="${hostel.address}" name="address" id="address" type="text">
+                        <label for="address">客栈地址</label>
+                    </div>
 
-            <div class="input-field col s12">
-                <textarea id="description" class="materialize-textarea" data-length="120"></textarea>
-                <label for="description">请描述你的客栈</label>
-                <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
-            </div>
+                    <div class="input-field col s12">
+                        <textarea id="description" class="materialize-textarea" name="description" data-length="120"></textarea>
+                        <label for="description">请描述你的客栈</label>
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
 
-                <div class="col s12">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                        保存
-                    </button>
-                </div>
+                    <div class="col s12">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                            保存
+                        </button>
+                    </div>
+                </form>
+                </c:if>
             </div>
         </div>
     </div>
@@ -97,7 +99,7 @@
 <script type="text/javascript" src="/HostelWorld/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/HostelWorld/js/materialize.min.js"></script>
 <script>
-    $('#description').val('这是我的小狗窝');
+    $('#description').val('${hostel.description}');
 
     $('#description').trigger('autoresize');
 //    $('input#hostel, textarea#address').characterCounter();

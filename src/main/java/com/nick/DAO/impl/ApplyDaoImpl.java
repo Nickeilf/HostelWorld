@@ -37,7 +37,20 @@ public class ApplyDaoImpl extends BaseDaoImpl implements ApplyDao{
 
     @Override
     public boolean findApply(String login) {
-        String hql="select count(*) from Apply where user=?";
+        String hql="select count(*) from Apply where user=? AND type='apply' AND state='check'";
+        Query query =sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,login);
+
+        long num= (long) query.uniqueResult();
+        if(num==0)
+            return false;
+        else
+            return true;
+    }
+
+    @Override
+    public boolean findModify(String login) {
+        String hql="select count(*) from Apply where user=? AND type='modify'AND state='check'";
         Query query =sessionFactory.getCurrentSession().createQuery(hql);
         query.setString(0,login);
 
@@ -54,4 +67,21 @@ public class ApplyDaoImpl extends BaseDaoImpl implements ApplyDao{
         Query query =sessionFactory.getCurrentSession().createQuery(hql);
         return query.list();
     }
+
+    @Override
+    public void approveApply(String id) {
+        String hql="update Apply a set a.state='approve'where apply_id=?";
+        Query query =sessionFactory.getCurrentSession().createQuery(hql);
+        query.setInteger(0,Integer.parseInt(id));
+        query.executeUpdate();
+    }
+
+    @Override
+    public void denyApply(String id) {
+        String hql="update Apply a set a.state='deny'where apply_id=?";
+        Query query =sessionFactory.getCurrentSession().createQuery(hql);
+        query.setInteger(0,Integer.parseInt(id));
+        query.executeUpdate();
+    }
+
 }

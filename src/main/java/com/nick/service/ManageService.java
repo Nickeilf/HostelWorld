@@ -13,4 +13,6 @@ public interface ManageService {
 
     public List<Apply> getAllCheckingApply();
 
+    public void user2hostelOwner(String login);
+
 }
