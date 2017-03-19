@@ -3,6 +3,7 @@ package com.nick.bean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 /**
  * Created by nick on 2017/3/18.
@@ -16,13 +17,23 @@ public class Trade {
     private String to_login;
     private String reason;
     private int amount;
+    private Timestamp create_time;
 
-    public Trade(int trade_id, String from_login, String to_login, String reason, int amount) {
+    public Trade(int trade_id, String from_login, String to_login, String reason, int amount, Timestamp create_time) {
         this.trade_id = trade_id;
         this.from_login = from_login;
         this.to_login = to_login;
         this.reason = reason;
         this.amount = amount;
+        this.create_time = create_time;
+    }
+
+    public Timestamp getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Timestamp create_time) {
+        this.create_time = create_time;
     }
 
     public Trade() {

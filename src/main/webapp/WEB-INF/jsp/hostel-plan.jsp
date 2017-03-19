@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -28,11 +29,7 @@
                 <a class="page-title">发布计划</a>
 
                 <ul id="top-nav-mobile" class="right hide-on-med-and-down" style="margin: 36px">
-                    <li class="white-text">客栈账户余额:XXXX ¥</li>
-                    &nbsp;&nbsp;&nbsp;
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                        登出
-                    </button>
+                    <li class="white-text">客栈账户余额:${hostel.balance} ¥</li>
                 </ul>
             </div>
         </div>
@@ -66,35 +63,42 @@
             <div class="col m12" style="border-bottom: 1px solid #dce0e0;padding-bottom: 20px">
                 <h3>发布新计划</h3>
 
-                <div class="input-field col s6">
-                    <input id="room" type="text">
-                    <label for="room">房型名称</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="price" placeholder="价格按每晚/元计算" type="number">
-                    <label for="price">房间价格</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="from" type="date" class="datepicker">
-                    <label for="from">起始时间</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="to" type="date" class="datepicker">
-                    <label for="to">终止时间</label>
-                </div>
-                <div class="input-field col s3">
-                    <input id="humans" type="number">
-                    <label for="humans">可居住人数</label>
-                </div>
-                <div class="input-field col s3">
-                    <input id="beds" type="number" >
-                    <label for="beds">房间床数</label>
-                </div>
-                <div class="col s6">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                        提交
-                    </button>
-                </div>
+                <form name="plan-form" action="newplan" method="post" onsubmit="return check()">
+                    <div class="input-field col s6">
+                        <input id="room" name="room" type="text">
+                        <label for="room">房型名称</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="price" name="price" placeholder="价格按每晚/元计算" type="number">
+                        <label for="price">房间价格</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="fromdate" name="fromdate" type="date" class="datepicker">
+                        <label for="fromdate">起始时间</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="todate" name="todate" type="date" class="datepicker">
+                        <label for="todate">终止时间</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="humans" name="humans" type="number">
+                        <label for="humans">可居住人数</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="beds" name="beds" type="number" >
+                        <label for="beds">房间床数</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="description" name="description" class="materialize-textarea" data-length="120"></textarea>
+                        <label for="description">房间描述</label>
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                    <div class="col s6 offset-s6">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                            提交
+                        </button>
+                    </div>
+                </form>
 
             </div>
 
@@ -102,40 +106,25 @@
                 <h3>当前计划</h3>
 
                 <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                    <li class="">
-                        <div class="collapsible-header">
-                            <i class="material-icons">store</i>
-                            房间名称(336¥每晚)
-                        </div>
-                        <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m8">
-                                    从2017-3-12到2018-3-12<br>
-                                    3张床<br>
-                                    可供6人居住<br>
-                                </div>
+                    <c:forEach var="plan" items="${plan}" varStatus="status">
+                        <li class="">
+                            <div class="collapsible-header">
+                                <i class="material-icons">store</i>
+                                ${plan.room}(${plan.price}¥每晚)
                             </div>
-                        </span>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="collapsible-header">
-                            <i class="material-icons">store</i>
-                            房间名称(336¥每晚)
-                        </div>
-                        <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m8">
-                                    从2017-3-12到2018-3-12<br>
-                                    3张床<br>
-                                    可供6人居住<br>
+                            <div class="collapsible-body" style="display: none;">
+                            <span>
+                                <div class="row">
+                                    <div class="col m8">
+                                        从${plan.fromdate}到${plan.todate}<br>
+                                        ${plan.bed_num}张床<br>
+                                        可供${plan.people}人居住<br>
+                                    </div>
                                 </div>
+                            </span>
                             </div>
-                        </span>
-                        </div>
-                    </li>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
@@ -148,9 +137,67 @@
 <script type="text/javascript" src="/HostelWorld/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/HostelWorld/js/materialize.min.js"></script>
 <script>
+    function check() {
+        var room = document.getElementById("room").value;
+        var price = document.getElementById("price").value;
+        var fromdate = document.getElementById("fromdate").value;
+        var todate = document.getElementById("todate").value;
+        var humans = document.getElementById("humans").value;
+        var bed = document.getElementById("beds").value;
+        var description = document.getElementById("description").value;
+
+        var success=true;
+        if(room==null||room==''){
+            Materialize.toast("房间名称不能为空",2000);
+            success=false;
+        }
+        if(price==null||price==''){
+            Materialize.toast("房间价格不能为空",2000);
+            success=false;
+        }
+        if(fromdate==null||fromdate==''){
+            Materialize.toast("开始时间不能为空",2000);
+            success=false;
+        }
+        if(todate==null||todate==''){
+            Materialize.toast("结束时间不能为空",2000);
+            success=false;
+        }
+        if(humans==null||humans==''){
+            Materialize.toast("最大人数不能为空",2000);
+            success=false;
+        }
+        if(bed==null||bed==''){
+            Materialize.toast("床数不能为空",2000);
+            success=false;
+        }
+        if(description==null||description==''){
+            Materialize.toast("房间描述不能为空",2000);
+            success=false;
+        }
+
+        if(checkin!=null&&checkin!=''&&checkin!=null&&checkin!=''){
+            var d1=toDate(checkin);
+            var d2=toDate(checkout);
+            if(d1>=d2){
+                Materialize.toast("入住日期不能晚于退房日期", 2000);
+                success=false;
+            }
+        }
+
+        return success;
+
+    }
+
+    function toDate(str){
+        var sd=str.split("-");
+        return new Date(sd[0],sd[1],sd[2]);
+    }
+    
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 17 // Creates a dropdown of 15 years to control year
+        selectYears: 17, // Creates a dropdown of 15 years to control year
+        format:'yyyy-mm-dd'
     });
 </script>
 

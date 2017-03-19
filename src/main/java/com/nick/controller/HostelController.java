@@ -1,9 +1,6 @@
 package com.nick.controller;
 
-import com.nick.bean.Hostel;
-import com.nick.bean.Member;
-import com.nick.bean.Plan;
-import com.nick.bean.User_dup;
+import com.nick.bean.*;
 import com.nick.service.ApplyService;
 import com.nick.service.HostelService;
 import com.nick.service.MemberService;
@@ -138,8 +135,21 @@ public class HostelController {
     //发布计划
     @ResponseBody
     @RequestMapping(value = "/hostel/plan", method = RequestMethod.GET)
-    public ModelAndView plan() {
+    public ModelAndView plan(HttpSession session) {
         ModelAndView mv= new ModelAndView();
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Hostel hostel=hostelService.getHostelBylogin(user_dup.getLogin());
+
+            List<Plan> plans = planService.getRelatedPlan(hostel.getHostel_id());
+
+            mv.addObject("hostel",hostel);
+            mv.addObject("plan",plans);
+        }
+
         mv.setViewName("hostel-plan");
         return mv;
     }
@@ -147,17 +157,90 @@ public class HostelController {
     //房客登记
     @ResponseBody
     @RequestMapping(value = "/hostel/register", method = RequestMethod.GET)
-    public ModelAndView register_man() {
+    public ModelAndView register_man(HttpSession session) {
         ModelAndView mv= new ModelAndView();
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Hostel hostel=hostelService.getHostelBylogin(user_dup.getLogin());
+
+            mv.addObject("hostel",hostel);
+        }
+
+
         mv.setViewName("hostel-register");
         return mv;
+    }
+
+    //房客入住等级
+    @ResponseBody
+    @RequestMapping(value = "/hostel/registerin", method = RequestMethod.POST)
+    public ModelAndView register_in(HttpServletRequest request) {
+        String hostel_id = request.getParameter("hostel_id");
+        String names=request.getParameter("names");
+        String humans=request.getParameter("humans");
+        String order_id=request.getParameter("order_id");
+        String type = request.getParameter("type");//现金OrCard
+        String isMember=request.getParameter("card");
+
+        if(isMember.equals("on")){
+            isMember="yes";
+        }else{
+            isMember="no";
+        }
+        if(type.equals("1")){
+            type="card";
+        }else{
+            type="cash";
+        }
+
+
+        System.out.println(humans);
+
+        //新建register
+        hostelService.createRegister(hostel_id,names,humans,order_id,type,isMember);
+        return new ModelAndView("redirect:/hostel/register");
+    }
+
+    //房客登记
+    @ResponseBody
+    @RequestMapping(value = "/hostel/checkout", method = RequestMethod.POST)
+    public ModelAndView checkout(HttpSession session,HttpServletRequest request) {
+        String register_id = request.getParameter("registerid");
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            hostelService.updateRegister(register_id);
+        }
+        return new ModelAndView("redirect:/hostel/register");
     }
 
     //信息统计
     @ResponseBody
     @RequestMapping(value = "/hostel/info", method = RequestMethod.GET)
-    public ModelAndView info() {
+    public ModelAndView info(HttpSession session) {
         ModelAndView mv= new ModelAndView();
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Hostel hostel=hostelService.getHostelBylogin(user_dup.getLogin());
+
+            List<Orders> orderses = hostelService.getRelatedOrders(hostel.getHostel_id());
+            List<Register> registers=hostelService.getRelatedRegister(hostel.getHostel_id());
+            List<Trade> trades = hostelService.getRelatedTrade(hostel.getHostel_id());
+
+            mv.addObject("trade",trades);
+            mv.addObject("registers",registers);
+            mv.addObject("orders",orderses);
+            mv.addObject("hostel",hostel);
+        }
+
         mv.setViewName("hostel-info");
         return mv;
     }
@@ -183,4 +266,33 @@ public class HostelController {
         mv.addObject("member",member);
         return mv;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/hostel/newplan", method = RequestMethod.POST)
+    public ModelAndView createPlan(HttpServletRequest request,HttpSession session,@RequestParam("fromdate")Date fromdate,@RequestParam("todate")Date todate){
+        String room = request.getParameter("room");
+        String price = request.getParameter("price");
+        String humans =request.getParameter("humans");
+        String beds = request.getParameter("beds");
+        String description = request.getParameter("description");
+
+        User_dup user_dup= (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("hostel")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Hostel hostel=hostelService.getHostelBylogin(user_dup.getLogin());
+
+            int plan_price = Integer.parseInt(price);
+            int human = Integer.parseInt(humans);
+            int bed = Integer.parseInt(beds);
+
+            planService.createPlan(fromdate,todate,room,plan_price,human,bed,hostel.getHostel_id(),description);
+
+        }
+
+
+        return new ModelAndView("redirect:/hostel/plan");
+    }
+
+
 }

@@ -35,7 +35,7 @@ public class ApplyServiceImpl implements ApplyService{
             applyDao.addApply(apply);
 
 
-            Trade trade = new Trade(tradeDao.getMaxTrade(),login,"manager","applyForNewHostel",1000);
+            Trade trade = new Trade(tradeDao.getMaxTrade(),login,"manager","applyForNewHostel",1000,createTime);
             tradeDao.addTrade(trade);
             tradeDao.managerAccount(1000);
 

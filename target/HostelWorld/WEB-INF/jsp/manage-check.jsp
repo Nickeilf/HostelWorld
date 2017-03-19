@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: nick
@@ -57,27 +58,33 @@
     <div class="container">
         <div class="row">
             <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-                <li class="">
-                    <div class="collapsible-header">
-                        <i class="material-icons">shopping_cart</i>
-                        客栈名
-                    </div>
-                    <div class="collapsible-body" style="display: none;">
-                        <span>
-                            <div class="row">
-                                <div class="col m8">
-                                    账户余额：1000¥<br>
-                                    应结算金额:22222¥
+                <c:forEach var="checkitem" items="${check}" varStatus="status">
+                    <li class="">
+                        <div class="collapsible-header">
+                            <i class="material-icons">shopping_cart</i>
+                            ${checkitem.hostel_name}
+                        </div>
+                        <div class="collapsible-body" style="display: none;">
+                            <span>
+                                <div class="row">
+                                    <div class="col m8">
+                                        余额:${checkitem.balance}¥<br>
+                                        应结算金额:${checkitem.check}¥
+                                    </div>
+                                    <div class="col m4">
+                                        <form action="checkmoney" method="post">
+                                            <input name="hostel_id" value="${checkitem.hostel_id}"type="text" hidden style="display: none">
+                                            <input name="amount" value="${checkitem.check}"type="text" hidden style="display: none">
+                                            <button class="btn waves-effect waves-light" type="submit" name="action">
+                                                结算
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="col m4">
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                                        结算
-                                    </button>
-                                </div>
-                            </div>
-                        </span>
-                    </div>
-                </li>
+                            </span>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
     </div>

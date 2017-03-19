@@ -26,4 +26,6 @@ public interface MemberDao {
 
     public void moneyBack(String login, int amount);
 
+    public void updateSuspendAndCancelMember();
+
 }

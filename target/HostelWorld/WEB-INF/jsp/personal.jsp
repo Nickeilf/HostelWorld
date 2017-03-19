@@ -293,8 +293,48 @@
             </div>
             <div id="info" class="section scroll-spy">
                 <h3 class="header">
-                    统计信息
+                    钱都去哪里了
                 </h3>
+
+                <div class="row">
+                    <div class="col m12">
+                        <table class="striped">
+                            <thead>
+                            <tr>
+                                <th data-field="id">啥时候！</th>
+                                <th data-field="id">我的钱！</th>
+                                <th data-field="name">去哪了！</th>
+                                <th data-field="price">多少钱！</th>
+                                <th data-field="price">为什么！</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <c:forEach var="tradeitem" items="${trade}" varStatus="status">
+                                <tr>
+                                    <td>${tradeitem.create_time}</td>
+                                    <td>${tradeitem.from_login}</td>
+                                    <td>${tradeitem.to_login}</td>
+                                    <td>${tradeitem.amount}</td>
+                                    <c:if test="${tradeitem.reason=='order'}">
+                                        <td>当然是用来剁手下单了</td>
+                                    </c:if>
+                                    <c:if test="${tradeitem.reason=='drawback'}">
+                                        <td>看来你退款了</td>
+                                    </c:if>
+                                    <c:if test="${tradeitem.reason=='applyForNewHostel'}">
+                                        <td>你是不是想开个店</td>
+                                    </c:if>
+                                    <c:if test="${tradeitem.reason=='check'}">
+                                        <td>经理大发慈悲给你发钱</td>
+                                    </c:if>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
             </c:if>
 

@@ -1,9 +1,6 @@
 package com.nick.controller;
 
-import com.nick.bean.Member;
-import com.nick.bean.Orders;
-import com.nick.bean.Plan;
-import com.nick.bean.User_dup;
+import com.nick.bean.*;
 import com.nick.service.OrderService;
 import com.nick.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +62,9 @@ public class MemberController {
                 List<Orders> finish = orderService.getFinishOrder(user_dup.getLogin());
                 List<Orders> cancel = orderService.getCancelOrder(user_dup.getLogin());
 
+                List<Trade> trades = memberService.getRelatedTrade(user_dup.getLogin());
 
+                mv.addObject("trade",trades);
                 mv.addObject("wait",wait);
                 mv.addObject("finish",finish);
                 mv.addObject("cancel",cancel);

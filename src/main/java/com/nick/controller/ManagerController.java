@@ -1,14 +1,12 @@
 package com.nick.controller;
 
-import com.nick.bean.Apply;
-import com.nick.bean.Hostel;
-import com.nick.bean.Manager;
-import com.nick.bean.User_dup;
+import com.nick.bean.*;
 import com.nick.service.ApplyService;
 import com.nick.service.HostelService;
 import com.nick.service.ManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by nick on 2017/3/13.
@@ -60,7 +60,12 @@ public class ManagerController {
         }else{
             Manager manager = manageService.getManager();
 
+            //获得每一个客栈应该结算的数额
+
+            List<HostelCheck> checkList = manageService.getCheckList();
+
             mv.addObject("manager",manager);
+            mv.addObject("check",checkList);
             mv.setViewName("manage-check");
         }
 
@@ -70,9 +75,33 @@ public class ManagerController {
 
     @ResponseBody
     @RequestMapping(value = "/manage/info", method = RequestMethod.GET)
-    public ModelAndView info() {
+    public ModelAndView info(HttpSession session) {
         ModelAndView mv= new ModelAndView();
+        User_dup user_dup = (User_dup) session.getAttribute("user");
+        if(user_dup==null||!user_dup.getType().equals("manager")){
+            return  new ModelAndView("redirect:/personal");
+        }else{
+            Manager manager = manageService.getManager();
+
+            List<Trade> trades = manageService.getAllTrade();
+            List<Register> registers=manageService.getAllRegister();
+            List<Orders> orderses=manageService.getAllOrders();
+
+
+            int[] income=manageService.getIncome();
+
+
+
+            mv.addObject("income",income);
+            mv.addObject("orders",orderses);
+            mv.addObject("registers",registers);
+            mv.addObject("manager",manager);
+            mv.addObject("trade",trades);
+        }
+
+
         mv.setViewName("manage-info");
+
         return mv;
     }
 
@@ -115,6 +144,22 @@ public class ManagerController {
 
 
         return new ModelAndView("redirect:/manage/approve");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/manage/checkmoney", method = RequestMethod.POST)
+    public ModelAndView checkmoney(HttpServletRequest request) {
+        String hostel_id=request.getParameter("hostel_id");
+        String amount =request.getParameter("amount");
+        int money = Integer.parseInt(amount);
+
+
+        manageService.checkHostel(hostel_id,money);
+
+
+
+
+        return new ModelAndView("redirect:/manage/check");
     }
 
 }

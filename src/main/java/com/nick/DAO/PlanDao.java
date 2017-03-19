@@ -17,5 +17,9 @@ public interface PlanDao {
 
     public List<Plan> getRelatedPlans(String hostelid);
 
+    public int getMaxId();
+
+    public void createPlan(Plan plan);
+
 
 }

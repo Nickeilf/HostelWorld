@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+
 /**
  * Created by nick on 2017/3/17.
  */
@@ -90,6 +92,12 @@ public class PayDaoImpl extends BaseDaoImpl implements PayDao {
             query=sessionFactory.getCurrentSession().createQuery(hql);
             query.setString(0,login);
             query.executeUpdate();
+
+            hql="update Member m set m.last_pay=? where login=?";
+            query=sessionFactory.getCurrentSession().createQuery(hql);
+            Timestamp createTime = new Timestamp(new java.util.Date().getTime());
+            query.setTimestamp(0,createTime);
+            query.setString(1,login);
         }
     }
 }

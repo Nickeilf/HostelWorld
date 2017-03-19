@@ -44,7 +44,7 @@ public class PayServiceImpl implements PayService {
 
         memberDao.updateCredit(member,amount,cardOrCash);
 
-        Trade trade = new Trade(tradeDao.getMaxTrade(),userlogin,"manager","order",amount);
+        Trade trade = new Trade(tradeDao.getMaxTrade(),userlogin,"manager","order",amount,createTime);
         tradeDao.addTrade(trade);
         tradeDao.managerAccount(amount);
     }

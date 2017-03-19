@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -107,6 +108,20 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
         query.setInteger(0,amount);
         query.setString(1,login);
+        query.executeUpdate();
+    }
+
+    @Override
+    public void updateSuspendAndCancelMember() {
+        Timestamp createTime = new Timestamp(new java.util.Date().getTime());
+        String update="update Member m set m.state='suspend' where DATEDIFF(DATE(?),DATE(m.last_pay))>=365";
+        Query query=sessionFactory.getCurrentSession().createQuery(update);
+        query.setTimestamp(0,createTime);
+        query.executeUpdate();
+
+        update="update Member m set m.state='cancel' where DATEDIFF(DATE(?),DATE(m.last_pay))>=730";
+        query=sessionFactory.getCurrentSession().createQuery(update);
+        query.setTimestamp(0,createTime);
         query.executeUpdate();
     }
 

@@ -65,4 +65,11 @@ public class PlanServiceImpl implements PlanService{
         return planDao.getRelatedPlans(hostelid);
     }
 
+    @Override
+    public void createPlan(Date fromdate, Date todate, String room, int price, int people, int bed_num, String hostel_id, String plan_description) {
+        int id = planDao.getMaxId();
+        Plan plan = new Plan(id,fromdate,todate,room,price,people,bed_num,"unuse",hostel_id,plan_description);
+        planDao.createPlan(plan);
+    }
+
 }

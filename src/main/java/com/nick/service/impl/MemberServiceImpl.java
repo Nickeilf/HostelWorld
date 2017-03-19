@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.nick.service.MemberService;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -67,11 +68,17 @@ public class MemberServiceImpl implements MemberService {
         int back = (int) (Integer.parseInt(amount)*0.9*19/20);
         memberDao.moneyBack(login,back);
 
-        Trade trade = new Trade(tradeDao.getMaxTrade(),"manager",login,"drawback",back);
+        Timestamp createTime = new Timestamp(new java.util.Date().getTime());
+        Trade trade = new Trade(tradeDao.getMaxTrade(),"manager",login,"drawback",back,createTime);
         tradeDao.addTrade(trade);
 
         tradeDao.managerAccount(-back);
 
+    }
+
+    @Override
+    public List<Trade> getRelatedTrade(String login) {
+        return tradeDao.getRelatedTrade(login);
     }
 
 }

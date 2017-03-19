@@ -53,7 +53,7 @@ public class PayController {
         User_dup user = (User_dup) session.getAttribute("user");
         if(user==null||user.getType().equals("user")){
 
-        }else if(user.getType().equals("member")){
+        }else if(user.getType().equals("member")||user.getType().equals("hostel")){
             //下单
             payService.createOrder(human,price,minus,fromdate,todate,hostel_id,plan_id,iscard,user.getLogin(),hostel_name,plan_name);
         }

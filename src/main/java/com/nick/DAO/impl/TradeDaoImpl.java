@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by nick on 2017/3/18.
  */
@@ -44,5 +46,28 @@ public class TradeDaoImpl extends BaseDaoImpl implements TradeDao {
         String hql="from Manager";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return (Manager) query.uniqueResult();
+    }
+
+    @Override
+    public List<Trade> getRelatedTrade(String login) {
+        String hql="from Trade t where t.from_login=? OR t.to_login=?";
+        Query query =sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,login);
+        query.setString(1,login);
+        return query.list();
+    }
+
+    @Override
+    public List<Trade> getAllTrade() {
+        String hql="from Trade";
+        Query query =sessionFactory.getCurrentSession().createQuery(hql);
+        return query.list();
+    }
+
+    @Override
+    public List<Object[]> getTrade() {
+        String hql="select to_login,amount,DATE(create_time) from Trade";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        return query.list();
     }
 }

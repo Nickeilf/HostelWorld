@@ -17,4 +17,6 @@ public interface PlanService {
 
 
     public List<Plan> getRelatedPlan(String hostelid);
+
+    public void createPlan(Date fromdate,Date todate,String room,int price,int people,int bed_num,String hostel_id,String plan_description);
 }

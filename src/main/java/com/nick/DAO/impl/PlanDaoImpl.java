@@ -3,6 +3,8 @@ package com.nick.DAO.impl;
 import com.nick.DAO.PlanDao;
 import com.nick.bean.Plan;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
@@ -66,6 +68,23 @@ public class PlanDaoImpl extends BaseDaoImpl implements PlanDao {
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setString(0,hostelid);
         return query.list();
+    }
+
+    @Override
+    public int getMaxId() {
+        String hql="select max(p.plan_id) from Plan p";
+        Query query =sessionFactory.getCurrentSession().createQuery(hql);
+        int max= (int) query.uniqueResult();
+        return max+1;
+    }
+
+    @Override
+    public void createPlan(Plan plan) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(plan);
+        tx.commit();
+        session.close();
     }
 
 

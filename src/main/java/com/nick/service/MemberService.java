@@ -1,6 +1,7 @@
 package com.nick.service;
 
 import com.nick.bean.Member;
+import com.nick.bean.Trade;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface MemberService {
     public void transfer(int points,String login);
 
     public void moneyBack(String login,String amount);
+
+    public List<Trade> getRelatedTrade(String login);
 }

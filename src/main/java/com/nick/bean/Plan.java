@@ -24,15 +24,17 @@ public class Plan {
     private String plan_description;
 
 
-    public Plan(int plan_id, Date fromdate, Date to, String room, int price, int people, int bed_num, String state) {
+    public Plan(int plan_id, Date fromdate, Date todate, String room, int price, int people, int bed_num, String state, String hostel_id, String plan_description) {
         this.plan_id = plan_id;
         this.fromdate = fromdate;
-        this.todate = to;
+        this.todate = todate;
         this.room = room;
         this.price = price;
         this.people = people;
-        this.bed_num=bed_num;
-        this.state=state;
+        this.bed_num = bed_num;
+        this.state = state;
+        this.hostel_id = hostel_id;
+        this.plan_description = plan_description;
     }
 
     public Plan() {
