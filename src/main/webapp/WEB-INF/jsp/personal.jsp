@@ -197,6 +197,7 @@
                                     <span>
                                         <div class="row">
                                             <div class="col m9">
+                                                订单号:${order.order_id}<br>
                                                 金额:${order.amount}<br>
                                                 时间:${order.fromdate}到${order.todate}<br>
                                                 <c:if test="${order.type=='card'}">
@@ -237,6 +238,7 @@
                                     <span>
                                         <div class="row">
                                             <div class="col m9">
+                                                订单号:${order.order_id}<br>
                                                 金额:${order.amount}<br>
                                                 时间:${order.fromdate}到${order.todate}<br>
                                                 <c:if test="${order.type=='card'}">
@@ -267,6 +269,7 @@
                                     <span>
                                         <div class="row">
                                             <div class="col m9">
+                                                订单号:${order.order_id}<br>
                                                 金额:${order.amount}<br>
                                                 时间:${order.fromdate}到${order.todate}<br>
                                                 <c:if test="${order.type=='card'}">

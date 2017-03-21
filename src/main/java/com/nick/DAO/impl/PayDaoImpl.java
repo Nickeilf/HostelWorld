@@ -93,11 +93,12 @@ public class PayDaoImpl extends BaseDaoImpl implements PayDao {
             query.setString(0,login);
             query.executeUpdate();
 
-            hql="update Member m set m.last_pay=? where login=?";
+            hql="update Member m set m.last_pay=? where m.login=?";
             query=sessionFactory.getCurrentSession().createQuery(hql);
             Timestamp createTime = new Timestamp(new java.util.Date().getTime());
             query.setTimestamp(0,createTime);
             query.setString(1,login);
+            query.executeUpdate();
         }
     }
 }

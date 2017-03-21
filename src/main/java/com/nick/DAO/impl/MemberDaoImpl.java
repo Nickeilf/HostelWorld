@@ -111,6 +111,7 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
         query.executeUpdate();
     }
 
+    //查找1年和2年的分别更新
     @Override
     public void updateSuspendAndCancelMember() {
         Timestamp createTime = new Timestamp(new java.util.Date().getTime());

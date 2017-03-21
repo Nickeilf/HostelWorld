@@ -70,6 +70,7 @@
                         <table class="striped">
                             <thead>
                             <tr>
+                                <th data-field="id">订单号</th>
                                 <th data-field="id">下单时间</th>
                                 <th data-field="name">房型</th>
                                 <th data-field="price">入住时间</th>
@@ -77,12 +78,14 @@
                                 <th data-field="price">用户名</th>
                                 <th data-field="price">支付方式</th>
                                 <th data-field="price">总价</th>
+                                <th data-field="price">订单状态</th>
                             </tr>
                             </thead>
 
                             <tbody>
                             <c:forEach var="order" items="${orders}">
                                 <tr>
+                                    <td>${order.order_id}</td>
                                     <td>${order.order_time}</td>
                                     <td>${order.plan_name}</td>
                                     <td>${order.fromdate}</td>
@@ -90,7 +93,7 @@
                                     <td>${order.user_login}</td>
                                     <td>${order.type}</td>
                                     <td>${order.amount}</td>
-
+                                    <td>${order.state}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>

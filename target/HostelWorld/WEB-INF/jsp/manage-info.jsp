@@ -292,7 +292,7 @@
                                                 }
                                             },
                                             data:[
-                                                {value:8, name:'会员卡支付'},
+                                                {value:11, name:'会员卡支付'},
                                                 {value:1, name:'现金支付'},
                                             ]
                                         }
